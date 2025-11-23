@@ -29,14 +29,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const login = async (email: string, password?: string) => {
     setIsLoading(true);
     // Simulate Network Request
-    await new Promise(resolve => setTimeout(resolve, 800));
+    await new Promise(resolve => setTimeout(resolve, 1000));
     
-    // In a real app, validation and backend call would happen here.
+    // Simulate validation
     if (!email || !password) {
         setIsLoading(false);
         throw new Error("Invalid credentials");
     }
 
+    if (password.length < 6) {
+        setIsLoading(false);
+        throw new Error("Password must be at least 6 characters");
+    }
+
+    // Simulate successful login with specific test email or generic
     const mockUser: User = {
       id: '1',
       name: email.split('@')[0],
@@ -53,15 +59,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const signup = async (name: string, email: string, password?: string) => {
     setIsLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 800));
+    await new Promise(resolve => setTimeout(resolve, 1200));
     
     if (!email || !password || !name) {
         setIsLoading(false);
         throw new Error("All fields are required");
     }
 
+    if (password.length < 6) {
+        setIsLoading(false);
+        throw new Error("Password must be at least 6 characters");
+    }
+
     const mockUser: User = {
-      id: '1',
+      id: Math.random().toString(36).substr(2, 9),
       name,
       email,
       avatar: `https://ui-avatars.com/api/?name=${name}&background=000000&color=fff`,
