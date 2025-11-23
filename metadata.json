@@ -1,0 +1,7 @@
+{
+  "name": "SpendWise - AI Expense Tracker",
+  "description": "A responsive, offline-capable expense tracker with Gemini-powered receipt analysis, budgeting, and visualizations.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
