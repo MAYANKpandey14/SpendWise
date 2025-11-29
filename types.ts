@@ -45,16 +45,17 @@ export interface FilterState {
 export type ViewMode = 'list' | 'chart';
 
 export const CURRENCIES = [
+  { code: 'INR', symbol: '₹', label: 'Indian Rupee' },
   { code: 'USD', symbol: '$', label: 'US Dollar' },
   { code: 'EUR', symbol: '€', label: 'Euro' },
   { code: 'GBP', symbol: '£', label: 'British Pound' },
   { code: 'JPY', symbol: '¥', label: 'Japanese Yen' },
   { code: 'CAD', symbol: 'C$', label: 'Canadian Dollar' },
   { code: 'AUD', symbol: 'A$', label: 'Australian Dollar' },
-  { code: 'INR', symbol: '₹', label: 'Indian Rupee' },
 ];
 
 export const REGIONS = [
+  { code: 'en-IN', label: 'India (DD/MM/YYYY)' },
   { code: 'en-US', label: 'United States (MM/DD/YYYY)' },
   { code: 'en-GB', label: 'United Kingdom (DD/MM/YYYY)' },
   { code: 'ja-JP', label: 'Japan (YYYY/MM/DD)' },

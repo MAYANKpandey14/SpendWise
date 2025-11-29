@@ -1,3 +1,4 @@
+
 import React, { useState, useRef } from 'react';
 import { useApp } from '../context/AppContext';
 import { useAuth } from '../context/AuthContext';
@@ -6,6 +7,7 @@ import { Input } from '../components/ui/Input';
 import { Modal } from '../components/ui/Modal';
 import { User, Save, Upload, Trash2, Globe, DollarSign } from 'lucide-react';
 import { CURRENCIES, REGIONS } from '../types';
+import { uploadProfileImage } from '../services/storageService';
 
 export const Settings: React.FC = () => {
   const { expenses } = useApp();
@@ -15,16 +17,20 @@ export const Settings: React.FC = () => {
   const [avatar, setAvatar] = useState(user?.avatar || '');
   const [currency, setCurrency] = useState(user?.currency || 'USD');
   const [locale, setLocale] = useState(user?.locale || 'en-US');
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   
   const [msg, setMsg] = useState('');
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [isDeleteDataOpen, setIsDeleteDataOpen] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
   
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
+      setSelectedFile(file);
+      // Create local preview
       const reader = new FileReader();
       reader.onloadend = () => {
         setAvatar(reader.result as string);
@@ -39,7 +45,29 @@ export const Settings: React.FC = () => {
   };
 
   const confirmUpdate = async () => {
-    await updateUser({ name, avatar, currency, locale });
+    setIsUploading(true);
+    let finalAvatar = avatar;
+    
+    // 1. Upload new image if selected
+    if (selectedFile && user) {
+        const publicUrl = await uploadProfileImage(selectedFile, user.id);
+        if (publicUrl) {
+            finalAvatar = publicUrl;
+        }
+    } else {
+        // Auto-update avatar if name changed and current avatar is a generated one
+        const isGenerated = !finalAvatar || finalAvatar.includes('ui-avatars.com');
+        if (name !== user?.name && isGenerated) {
+            finalAvatar = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=000000&color=fff`;
+        }
+    }
+
+    setAvatar(finalAvatar);
+
+    // 2. Update Profile Data
+    await updateUser({ name, avatar: finalAvatar, currency, locale });
+    
+    setIsUploading(false);
     setIsConfirmOpen(false);
     setMsg('Profile updated successfully.');
     setTimeout(() => setMsg(''), 3000);
@@ -145,8 +173,8 @@ export const Settings: React.FC = () => {
 
             <div className="flex items-center justify-between pt-4 border-t border-border dark:border-border-dark">
                 <span className="text-sm text-emerald-600 dark:text-emerald-400 font-medium h-5">{msg}</span>
-                <Button type="submit" disabled={isLoading} className="flex items-center gap-2">
-                    <Save size={16} /> Save Changes
+                <Button type="submit" disabled={isLoading || isUploading} className="flex items-center gap-2">
+                    <Save size={16} /> {isUploading ? 'Uploading...' : 'Save Changes'}
                 </Button>
             </div>
         </form>
@@ -163,7 +191,7 @@ export const Settings: React.FC = () => {
             <div className="flex justify-between items-center">
                 <div>
                     <span className="block font-medium text-text-DEFAULT dark:text-text-dark">Clear Local Data</span>
-                    <span className="text-xs text-text-muted">Permanently remove {expenses.length} transaction records.</span>
+                    <span className="text-xs text-text-muted">Permanently remove {expenses.length} transaction records from this device.</span>
                 </div>
                 <Button variant="danger" size="sm" onClick={() => setIsDeleteDataOpen(true)}>Delete All</Button>
             </div>
@@ -181,7 +209,7 @@ export const Settings: React.FC = () => {
           description="Are you sure you want to update your profile settings?"
           onConfirm={confirmUpdate}
           confirmLabel="Save"
-          isLoading={isLoading}
+          isLoading={isLoading || isUploading}
        />
 
        <Modal 

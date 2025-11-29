@@ -7,7 +7,6 @@ import { Layout } from './components/Layout';
 import { Dashboard } from './pages/Dashboard';
 import { ExpenseList } from './pages/ExpenseList';
 import { AddExpense } from './pages/AddExpense';
-import { Reports } from './pages/Reports';
 import { Settings } from './pages/Settings';
 import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
@@ -38,7 +37,6 @@ const App: React.FC = () => {
               <Route path="/" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
               <Route path="/expenses" element={<ProtectedRoute><ExpenseList /></ProtectedRoute>} />
               <Route path="/add" element={<ProtectedRoute><AddExpense /></ProtectedRoute>} />
-              <Route path="/reports" element={<ProtectedRoute><Reports /></ProtectedRoute>} />
               <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
               
               <Route path="*" element={<Navigate to="/" replace />} />

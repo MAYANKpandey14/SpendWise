@@ -1,18 +1,27 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { ExpenseFormData } from "../types";
 
-// NOTE: Ideally this is handled on a backend edge function to protect the key.
-// For this client-side demo, we use the env var directly.
-const API_KEY = process.env.API_KEY || '';
-
 export const analyzeReceipt = async (base64Image: string): Promise<Partial<ExpenseFormData> | null> => {
-  if (!API_KEY) {
+  // Helper to safely access env vars in Vite or Node environments
+  const getEnv = (key: string, viteKey: string) => {
+    if (typeof import.meta !== 'undefined' && (import.meta as any).env) {
+      return (import.meta as any).env[viteKey] || (import.meta as any).env[key] || '';
+    }
+    if (typeof process !== 'undefined' && process.env) {
+      return process.env[viteKey] || process.env[key] || '';
+    }
+    return '';
+  };
+
+  const apiKey = getEnv('API_KEY', 'VITE_GEMINI_API_KEY');
+
+  if (!apiKey) {
     console.warn("Gemini API Key missing");
     return null;
   }
 
   try {
-    const ai = new GoogleGenAI({ apiKey: API_KEY });
+    const ai = new GoogleGenAI({ apiKey: apiKey });
     
     const prompt = "Extract the merchant name, total amount, date, and suggest a category ID (food, transport, housing, utilities, health, shopping, work, entertainment) from this receipt. Return JSON.";
 
@@ -53,7 +62,7 @@ export const analyzeReceipt = async (base64Image: string): Promise<Partial<Expen
       amount: data.amount,
       date: data.date,
       categoryId: data.categoryId,
-      currency: 'USD' // Default
+      currency: 'INR' // Default to INR
     };
 
   } catch (error) {

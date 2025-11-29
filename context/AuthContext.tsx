@@ -1,4 +1,7 @@
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { supabase } from '../services/supabaseClient';
+import { getUserProfile, updateUserProfile } from '../services/userService';
 import { User } from '../types';
 
 interface AuthContextType {
@@ -18,106 +21,117 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Check for persisted user session
-    const storedUser = localStorage.getItem('spendwise_user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-    setIsLoading(false);
+    // Check active session
+    const initializeAuth = async () => {
+      // Cast to any to bypass SupabaseAuthClient type issues
+      const { data: { session } } = await (supabase.auth as any).getSession();
+      
+      if (session?.user) {
+        const profile = await getUserProfile(session.user.id);
+        if (profile) {
+          setUser(profile);
+        } else {
+            // Fallback if profile trigger hasn't fired yet or failed
+            setUser({
+                id: session.user.id,
+                email: session.user.email || '',
+                name: session.user.user_metadata.full_name || 'User',
+                avatar: session.user.user_metadata.avatar_url,
+                currency: 'USD',
+                locale: 'en-US'
+            });
+        }
+      }
+      setIsLoading(false);
+    };
+
+    initializeAuth();
+
+    // Listen for changes
+    // Cast to any to bypass SupabaseAuthClient type issues
+    const { data: { subscription } } = (supabase.auth as any).onAuthStateChange(async (event: any, session: any) => {
+      if (event === 'SIGNED_IN' && session?.user) {
+         setIsLoading(true);
+         const profile = await getUserProfile(session.user.id);
+         if (profile) {
+             setUser(profile);
+         } else {
+             // Handle case where profile might be created via trigger asynchronously
+             // For now, use metadata
+             setUser({
+                id: session.user.id,
+                email: session.user.email || '',
+                name: session.user.user_metadata.full_name || 'User',
+                avatar: session.user.user_metadata.avatar_url,
+                currency: 'USD',
+                locale: 'en-US'
+            });
+         }
+         setIsLoading(false);
+      } else if (event === 'SIGNED_OUT') {
+        setUser(null);
+        setIsLoading(false);
+      }
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
   const login = async (email: string, password?: string) => {
-    setIsLoading(true);
-    // Simulate Network Request
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    if (!password) throw new Error("Password required");
     
-    // Simulate validation
-    if (!email || !password) {
-        setIsLoading(false);
-        throw new Error("Invalid credentials");
-    }
+    // Cast to any to bypass SupabaseAuthClient type issues
+    const { error } = await (supabase.auth as any).signInWithPassword({
+      email,
+      password,
+    });
 
-    if (password.length < 6) {
-        setIsLoading(false);
-        throw new Error("Password must be at least 6 characters");
-    }
-
-    // Simulate successful login with specific test email or generic
-    const mockUser: User = {
-      id: '1',
-      name: email.split('@')[0],
-      email: email,
-      avatar: `https://ui-avatars.com/api/?name=${email.split('@')[0]}&background=000000&color=fff`,
-      currency: 'USD',
-      locale: 'en-US'
-    };
-    
-    setUser(mockUser);
-    localStorage.setItem('spendwise_user', JSON.stringify(mockUser));
-    setIsLoading(false);
+    if (error) throw error;
   };
 
   const signup = async (name: string, email: string, password?: string) => {
-    setIsLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 1200));
-    
-    if (!email || !password || !name) {
-        setIsLoading(false);
-        throw new Error("All fields are required");
-    }
+    if (!password) throw new Error("Password required");
 
-    if (password.length < 6) {
-        setIsLoading(false);
-        throw new Error("Password must be at least 6 characters");
-    }
-
-    const mockUser: User = {
-      id: Math.random().toString(36).substr(2, 9),
-      name,
+    // Cast to any to bypass SupabaseAuthClient type issues
+    const { error } = await (supabase.auth as any).signUp({
       email,
-      avatar: `https://ui-avatars.com/api/?name=${name}&background=000000&color=fff`,
-      currency: 'USD',
-      locale: 'en-US'
-    };
-    
-    setUser(mockUser);
-    localStorage.setItem('spendwise_user', JSON.stringify(mockUser));
-    setIsLoading(false);
+      password,
+      options: {
+        data: {
+          full_name: name,
+        },
+      },
+    });
+
+    if (error) throw error;
   };
 
   const googleLogin = async () => {
-    setIsLoading(true);
-    // Simulate Google OAuth Popup flow
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    const mockUser: User = {
-      id: 'google-uid-123',
-      name: 'Google User',
-      email: 'user@gmail.com',
-      avatar: 'https://ui-avatars.com/api/?name=Google+User&background=2383e2&color=fff',
-      currency: 'USD',
-      locale: 'en-US'
-    };
-    
-    setUser(mockUser);
-    localStorage.setItem('spendwise_user', JSON.stringify(mockUser));
-    setIsLoading(false);
-  }
+    // Cast to any to bypass SupabaseAuthClient type issues
+    const { error } = await (supabase.auth as any).signInWithOAuth({
+      provider: 'google',
+    });
+    if (error) throw error;
+  };
 
-  const logout = () => {
+  const logout = async () => {
+    // Cast to any to bypass SupabaseAuthClient type issues
+    await (supabase.auth as any).signOut();
     setUser(null);
-    localStorage.removeItem('spendwise_user');
   };
 
   const updateUser = async (data: Partial<User>) => {
     if (!user) return;
-    setIsLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 500));
     
-    const updatedUser = { ...user, ...data };
-    setUser(updatedUser);
-    localStorage.setItem('spendwise_user', JSON.stringify(updatedUser));
-    setIsLoading(false);
+    try {
+      await updateUserProfile(user.id, data);
+      setUser(prev => prev ? { ...prev, ...data } : null);
+    } catch (error) {
+      console.error("Failed to update user", error);
+      throw error;
+    }
   };
 
   return (

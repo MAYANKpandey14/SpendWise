@@ -13,11 +13,11 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
+  // Removed Analytics from navigation
   const navItems = [
     { to: '/', icon: LayoutDashboard, label: 'Dashboard' },
     { to: '/expenses', icon: Receipt, label: 'All Expenses' },
     { to: '/add', icon: Plus, label: 'Add Entry' },
-    { to: '/reports', icon: PieChart, label: 'Analytics' },
     { to: '/settings', icon: Settings, label: 'Settings' },
   ];
 
