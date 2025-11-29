@@ -15,7 +15,7 @@ export const Settings: React.FC = () => {
   
   const [name, setName] = useState(user?.name || '');
   const [avatar, setAvatar] = useState(user?.avatar || '');
-  const [currency, setCurrency] = useState(user?.currency || 'USD');
+    const [currency, setCurrency] = useState(user?.currency || 'INR');
   const [locale, setLocale] = useState(user?.locale || 'en-US');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   

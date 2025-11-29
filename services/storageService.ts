@@ -3,8 +3,9 @@ import { supabase } from './supabaseClient';
 
 export const uploadProfileImage = async (file: File, userId: string): Promise<string | null> => {
   try {
-    const fileExt = file.name.split('.').pop();
-    const fileName = `${userId}-${Math.random()}.${fileExt}`;
+    const fileExt = file.name.split('.').pop() ?? '';
+    const randomPart = Math.random().toString(36).slice(2, 10);
+    const fileName = `${userId}-${randomPart}${fileExt ? '.' + fileExt : ''}`;
     const filePath = `${fileName}`;
 
     const { error: uploadError } = await supabase.storage
@@ -18,12 +19,11 @@ export const uploadProfileImage = async (file: File, userId: string): Promise<st
       console.error('Error uploading image:', uploadError);
       throw uploadError;
     }
-
-    const { data } = supabase.storage
+    const { data: publicData } = supabase.storage
       .from('avatars')
       .getPublicUrl(filePath);
 
-    return data.publicUrl;
+    return publicData?.publicUrl ?? null;
   } catch (error) {
     console.error('Storage service error:', error);
     return null;

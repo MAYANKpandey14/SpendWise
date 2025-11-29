@@ -15,7 +15,7 @@ export const getUserProfile = async (userId: string): Promise<User | null> => {
 
   if (error) {
     // Ignore error if row doesn't exist yet (first login)
-    if (error.code !== 'PGRST116') {
+    if (error?.code !== 'PGRST116') {
         console.error('Error fetching profile:', error);
     }
     return null;
@@ -23,8 +23,9 @@ export const getUserProfile = async (userId: string): Promise<User | null> => {
 
   // Fetch the email from the auth session since it's not in the public profile
   // Cast to any to bypass SupabaseAuthClient type issues
-  const { data: { user } } = await (supabase.auth as any).getUser();
-  
+  const userResp = await (supabase.auth as any).getUser();
+  const user = userResp?.data?.user;
+
   if (!data) return null;
 
   return {
@@ -32,7 +33,7 @@ export const getUserProfile = async (userId: string): Promise<User | null> => {
     name: data.name || '',
     email: user?.email || '',
     avatar: data.avatar || undefined,
-    currency: data.currency || 'USD',
+    currency: data.currency || 'INR',
     locale: data.locale || 'en-US'
   };
 };

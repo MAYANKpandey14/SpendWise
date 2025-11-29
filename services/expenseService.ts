@@ -35,22 +35,51 @@ const mapToDb = (expense: Expense, userId: string): ExpenseInsert => ({
 });
 
 export const fetchExpensesFromDb = async (): Promise<Expense[]> => {
-  const { data, error } = await supabase
+  console.debug('fetchExpensesFromDb: starting');
+
+  const timeoutMs = 7000;
+
+  const supabasePromise = supabase
     .from('expenses')
     .select('*')
     .order('date', { ascending: false });
+
+  // Timeout promise resolves to a sentinel response so we can handle gracefully
+  const timeoutPromise = new Promise<any>(resolve => {
+    const id = setTimeout(() => {
+      clearTimeout(id);
+      resolve({ data: null, error: new Error('Timeout fetching expenses') });
+    }, timeoutMs);
+  });
+
+  const resp = (await Promise.race([supabasePromise, timeoutPromise])) as { data: ExpenseRow[] | null; error: any } | null;
+
+  if (!resp) {
+    console.warn('fetchExpensesFromDb: got no response, returning empty list');
+    return [];
+  }
+
+  const { data, error } = resp;
 
   if (error) {
     console.error('Error fetching expenses:', error);
     return [];
   }
 
-  return data.map(mapFromDb);
+  if (!data) {
+    console.debug('fetchExpensesFromDb: no rows returned');
+    return [];
+  }
+
+  console.debug(`fetchExpensesFromDb: fetched ${data.length} rows`);
+  const rows = data as ExpenseRow[];
+  return rows.map(mapFromDb);
 };
 
 export const createExpenseInDb = async (expense: Expense) => {
   // Cast to any to bypass SupabaseAuthClient type issues
-  const { data: { user } } = await (supabase.auth as any).getUser();
+  const userResp = await (supabase.auth as any).getUser();
+  const user = userResp?.data?.user;
   if (!user) throw new Error('User not authenticated');
 
   const { error } = await supabase
@@ -65,11 +94,22 @@ export const createExpenseInDb = async (expense: Expense) => {
 
 export const updateExpenseInDb = async (expense: Expense) => {
   // Cast to any to bypass SupabaseAuthClient type issues
-  const { data: { user } } = await (supabase.auth as any).getUser();
+  const userResp = await (supabase.auth as any).getUser();
+  const user = userResp?.data?.user;
   if (!user) throw new Error('User not authenticated');
 
-  // We need to map to Update type, which is similar to Insert but all optional
-  const payload: ExpenseUpdate = mapToDb(expense, user.id);
+  // Build an update payload matching the Update type (all fields optional)
+  const payload: ExpenseUpdate = {
+    user_id: user.id,
+    amount: expense.amount,
+    currency: expense.currency,
+    category_id: expense.categoryId,
+    date: expense.date,
+    merchant: expense.merchant,
+    description: expense.description ?? null,
+    receipt_url: expense.receiptUrl ?? null,
+    created_at: expense.createdAt,
+  };
 
   const { error } = await supabase
     .from('expenses')
