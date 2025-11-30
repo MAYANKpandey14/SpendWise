@@ -147,6 +147,7 @@ export const AddExpense: React.FC = () => {
               className="hidden" 
               accept="image/*"
               onChange={handleFileChange}
+              data-testid="receipt-upload"
             />
           </div>
 

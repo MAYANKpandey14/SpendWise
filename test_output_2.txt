@@ -1,0 +1,895 @@
+
+[1m[46m RUN [49m[22m [36mv4.0.14 [39m[90mD:/Backup/OneDrive - Moradabad Institute Of Technology/Desktop/Manu/Projects/SpendWise[39m
+
+[90mstdout[2m | test/expenses.test.tsx[2m > [22m[2mExpense Management[2m > [22m[2mExpense List[2m > [22m[2mrenders expense list
+[22m[39mAuth: starting getSession()
+Auth: getSession() resolved { data: { session: [1mnull[22m } }
+
+stderr | test/expenses.test.tsx > Expense Management > Expense List > renders expense list
+ΓÜá∩╕Å React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+ΓÜá∩╕Å React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+Warning: An update to AuthProvider inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://reactjs.org/link/wrap-tests-with-act
+    at AuthProvider (D:/Backup/OneDrive - Moradabad Institute Of Technology/Desktop/Manu/Projects/SpendWise/context/AuthContext.tsx:12:25)
+    at Router (D:\Backup\OneDrive - Moradabad Institute Of Technology\Desktop\Manu\Projects\SpendWise\node_modules\react-router\dist\umd\react-router.development.js:1207:17)
+    at BrowserRouter (D:\Backup\OneDrive - Moradabad Institute Of Technology\Desktop\Manu\Projects\SpendWise\node_modules\react-router-dom\dist\umd\react-router-dom.development.js:695:7)
+
+[90mstdout[2m | test/settings.test.tsx[2m > [22m[2mSettings[2m > [22m[2mrenders settings form
+[22m[39mAuth: starting getSession()
+Auth: getSession() resolved { data: { session: [1mnull[22m } }
+
+stderr | test/settings.test.tsx > Settings > renders settings form
+ΓÜá∩╕Å React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+ΓÜá∩╕Å React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+Warning: An update to AuthProvider inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://reactjs.org/link/wrap-tests-with-act
+    at AuthProvider (D:/Backup/OneDrive - Moradabad Institute Of Technology/Desktop/Manu/Projects/SpendWise/context/AuthContext.tsx:12:25)
+    at Router (D:\Backup\OneDrive - Moradabad Institute Of Technology\Desktop\Manu\Projects\SpendWise\node_modules\react-router\dist\umd\react-router.development.js:1207:17)
+    at BrowserRouter (D:\Backup\OneDrive - Moradabad Institute Of Technology\Desktop\Manu\Projects\SpendWise\node_modules\react-router-dom\dist\umd\react-router-dom.development.js:695:7)
+
+ [31mΓ¥»[39m test/settings.test.tsx [2m([22m[2m1 test[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 111[2mms[22m[39m
+[31m     [31m├ù[31m renders settings form[39m[32m 107[2mms[22m[39m
+[90mstdout[2m | test/expenses.test.tsx[2m > [22m[2mExpense Management[2m > [22m[2mAdd Expense[2m > [22m[2mrenders add expense form
+[22m[39mAuth: starting getSession()
+
+[90mstdout[2m | test/expenses.test.tsx[2m > [22m[2mExpense Management[2m > [22m[2mAdd Expense[2m > [22m[2mrenders add expense form
+[22m[39mAuth: getSession() resolved { data: { session: [1mnull[22m } }
+
+[90mstdout[2m | test/expenses.test.tsx[2m > [22m[2mExpense Management[2m > [22m[2mAdd Expense[2m > [22m[2mhandles AI receipt extraction
+[22m[39mAuth: starting getSession()
+
+stderr | test/expenses.test.tsx > Expense Management > Add Expense > handles AI receipt extraction
+Warning: An update to AuthProvider inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://reactjs.org/link/wrap-tests-with-act
+    at AuthProvider (D:/Backup/OneDrive - Moradabad Institute Of Technology/Desktop/Manu/Projects/SpendWise/context/AuthContext.tsx:12:25)
+    at Router (D:\Backup\OneDrive - Moradabad Institute Of Technology\Desktop\Manu\Projects\SpendWise\node_modules\react-router\dist\umd\react-router.development.js:1207:17)
+    at BrowserRouter (D:\Backup\OneDrive - Moradabad Institute Of Technology\Desktop\Manu\Projects\SpendWise\node_modules\react-router-dom\dist\umd\react-router-dom.development.js:695:7)
+
+[90mstdout[2m | test/expenses.test.tsx[2m > [22m[2mExpense Management[2m > [22m[2mAdd Expense[2m > [22m[2mhandles AI receipt extraction
+[22m[39mAuth: getSession() resolved { data: { session: [1mnull[22m } }
+
+ [31mΓ¥»[39m test/expenses.test.tsx [2m([22m[2m3 tests[22m[2m | [22m[31m2 failed[39m[2m)[22m[32m 167[2mms[22m[39m
+[31m       [31m├ù[31m renders expense list[39m[32m 78[2mms[22m[39m
+       [32mΓ£ô[39m renders add expense form[32m 53[2mms[22m[39m
+[31m       [31m├ù[31m handles AI receipt extraction[39m[32m 34[2mms[22m[39m
+[90mstdout[2m | test/auth.test.tsx[2m > [22m[2mAuthentication[2m > [22m[2mLogin Page[2m > [22m[2mrenders login form correctly
+[22m[39mAuth: starting getSession()
+Auth: getSession() resolved { data: { session: [1mnull[22m } }
+
+stderr | test/auth.test.tsx > Authentication > Login Page > renders login form correctly
+ΓÜá∩╕Å React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+ΓÜá∩╕Å React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+Warning: An update to AuthProvider inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://reactjs.org/link/wrap-tests-with-act
+    at AuthProvider (D:/Backup/OneDrive - Moradabad Institute Of Technology/Desktop/Manu/Projects/SpendWise/context/AuthContext.tsx:12:25)
+    at Router (D:\Backup\OneDrive - Moradabad Institute Of Technology\Desktop\Manu\Projects\SpendWise\node_modules\react-router\dist\umd\react-router.development.js:1207:17)
+    at BrowserRouter (D:\Backup\OneDrive - Moradabad Institute Of Technology\Desktop\Manu\Projects\SpendWise\node_modules\react-router-dom\dist\umd\react-router-dom.development.js:695:7)
+
+[90mstdout[2m | test/auth.test.tsx[2m > [22m[2mAuthentication[2m > [22m[2mLogin Page[2m > [22m[2mhandles email input
+[22m[39mAuth: starting getSession()
+
+stderr | test/auth.test.tsx > Authentication > Login Page > handles email input
+Warning: An update to AuthProvider inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://reactjs.org/link/wrap-tests-with-act
+    at AuthProvider (D:/Backup/OneDrive - Moradabad Institute Of Technology/Desktop/Manu/Projects/SpendWise/context/AuthContext.tsx:12:25)
+    at Router (D:\Backup\OneDrive - Moradabad Institute Of Technology\Desktop\Manu\Projects\SpendWise\node_modules\react-router\dist\umd\react-router.development.js:1207:17)
+    at BrowserRouter (D:\Backup\OneDrive - Moradabad Institute Of Technology\Desktop\Manu\Projects\SpendWise\node_modules\react-router-dom\dist\umd\react-router-dom.development.js:695:7)
+
+[90mstdout[2m | test/auth.test.tsx[2m > [22m[2mAuthentication[2m > [22m[2mLogin Page[2m > [22m[2mhandles email input
+[22m[39mAuth: getSession() resolved { data: { session: [1mnull[22m } }
+
+[90mstdout[2m | test/auth.test.tsx[2m > [22m[2mAuthentication[2m > [22m[2mSignup Page[2m > [22m[2mrenders signup form correctly
+[22m[39mAuth: starting getSession()
+
+stderr | test/auth.test.tsx > Authentication > Signup Page > renders signup form correctly
+Warning: An update to AuthProvider inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://reactjs.org/link/wrap-tests-with-act
+    at AuthProvider (D:/Backup/OneDrive - Moradabad Institute Of Technology/Desktop/Manu/Projects/SpendWise/context/AuthContext.tsx:12:25)
+    at Router (D:\Backup\OneDrive - Moradabad Institute Of Technology\Desktop\Manu\Projects\SpendWise\node_modules\react-router\dist\umd\react-router.development.js:1207:17)
+    at BrowserRouter (D:\Backup\OneDrive - Moradabad Institute Of Technology\Desktop\Manu\Projects\SpendWise\node_modules\react-router-dom\dist\umd\react-router-dom.development.js:695:7)
+
+[90mstdout[2m | test/auth.test.tsx[2m > [22m[2mAuthentication[2m > [22m[2mSignup Page[2m > [22m[2mrenders signup form correctly
+[22m[39mAuth: getSession() resolved { data: { session: [1mnull[22m } }
+
+ [32mΓ£ô[39m test/auth.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[33m 497[2mms[22m[39m
+       [33m[2mΓ£ô[22m[39m renders login form correctly [33m 393[2mms[22m[39m
+[90mstdout[2m | test/dashboard.test.tsx[2m > [22m[2mDashboard[2m > [22m[2mrenders dashboard components
+[22m[39mAuth: starting getSession()
+Auth: getSession() resolved { data: { session: [1mnull[22m } }
+
+stderr | test/dashboard.test.tsx > Dashboard > renders dashboard components
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+ΓÜá∩╕Å React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+ΓÜá∩╕Å React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+Warning: An update to AuthProvider inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://reactjs.org/link/wrap-tests-with-act
+    at AuthProvider (D:/Backup/OneDrive - Moradabad Institute Of Technology/Desktop/Manu/Projects/SpendWise/context/AuthContext.tsx:12:25)
+    at Router (D:\Backup\OneDrive - Moradabad Institute Of Technology\Desktop\Manu\Projects\SpendWise\node_modules\react-router\dist\umd\react-router.development.js:1207:17)
+    at BrowserRouter (D:\Backup\OneDrive - Moradabad Institute Of Technology\Desktop\Manu\Projects\SpendWise\node_modules\react-router-dom\dist\umd\react-router-dom.development.js:695:7)
+
+ [31mΓ¥»[39m test/dashboard.test.tsx [2m([22m[2m1 test[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 91[2mms[22m[39m
+[31m     [31m├ù[31m renders dashboard components[39m[32m 90[2mms[22m[39m
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ» Failed Tests 4 ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+
+ FAIL  test/dashboard.test.tsx > Dashboard > renders dashboard components
+TestingLibraryElementError: Unable to find an element with the text: /total expenses/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="space-y-8 animate-fade-in"
+    >
+      <header
+        class="flex justify-between items-end border-b border-border dark:border-border-dark pb-6"
+      >
+        <div>
+          <h2
+            class="text-3xl font-bold text-text-DEFAULT dark:text-text-dark tracking-tight"
+          >
+            Dashboard
+          </h2>
+          <p
+            class="text-text-muted mt-1"
+          >
+            Overview for 
+            November 2025
+          </p>
+        </div>
+        <button
+          class="md:hidden bg-text-DEFAULT dark:bg-white text-bg dark:text-black p-3 rounded-full shadow-lg"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-plus"
+            fill="none"
+            height="20"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5 12h14"
+            />
+            <path
+              d="M12 5v14"
+            />
+          </svg>
+        </button>
+      </header>
+      <div
+        class="grid grid-cols-1 md:grid-cols-3 gap-6"
+      >
+        <div
+          class="p-6 rounded-lg border border-border dark:border-border-dark bg-bg dark:bg-bg-dark flex flex-col justify-between shadow-sm"
+        >
+          <div>
+            <p
+              class="text-text-muted text-xs font-semibold uppercase tracking-wider mb-2"
+            >
+              Total Spent
+            </p>
+            <h3
+              class="text-4xl font-bold text-text-DEFAULT dark:text-text-dark tracking-tight"
+            >
+              $
+              0.00
+            </h3>
+          </div>
+          <div
+            class="mt-4 flex items-center text-sm text-text-muted"
+          >
+            <span
+              class="bg-bg-subtle dark:bg-bg-subtle-dark px-2 py-0.5 rounded text-xs mr-2"
+            >
+              0
+               txns
+            </span>
+            <span>
+              in 
+              Nov
+            </span>
+          </div>
+        </div>
+        <div
+          class="p-6 rounded-lg border border-border dark:border-border-dark bg-bg dark:bg-bg-dark flex flex-col justify-between shadow-sm"
+        >
+          <div>
+            <p
+              class="text-text-muted text-xs font-semibold uppercase tracking-wider mb-2"
+            >
+              Top Category
+            </p>
+            <h3
+              class="text-2xl font-bold text-text-DEFAULT dark:text-text-dark truncate"
+            >
+              N/A
+            </h3>
+            <p
+              class="text-lg text-text-muted mt-1"
+            >
+              $
+              0.00
+            </p>
+          </div>
+          <div
+            class="mt-2 text-xs text-text-muted"
+          >
+            Most spent category this month
+          </div>
+        </div>
+        <div
+          class="p-6 rounded-lg border border-border dark:border-border-dark bg-bg dark:bg-bg-dark flex flex-col justify-between shadow-sm"
+        >
+          <div>
+            <p
+              class="text-text-muted text-xs font-semibold uppercase tracking-wider mb-2"
+            >
+              Last 7 Days
+            </p>
+            <h3
+              class="text-2xl font-bold text-text-DEFAULT dark:text-text-dark"
+            >
+              $
+              0
+            </h3>
+          </div>
+          <div
+            class="h-12 w-full mt-2"
+          >
+            <div
+              class="recharts-responsive-container"
+              style="width: 100%; height: 100%; min-width: 0;"
+            >
+              <div
+                style="width: 0px; height: 0px; overflow: visible;"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="grid grid-cols-1 lg:grid-cols-3 gap-8"
+      >
+        <div
+          class="lg:col-span-3 space-y-4"
+        >
+          <div
+            class="flex items-center justify-between"
+          >
+            <h3
+              class="text-sm font-semibold text-text-muted uppercase tracking-wider flex items-center gap-2"
+            >
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-trending-up"
+                fill="none"
+                height="16"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16 7h6v6"
+                />
+                <path
+                  d="m22 7-8.5 8.5-5-5L2 17"
+                />...
+ Γ¥» Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ Γ¥» node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ Γ¥» node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ Γ¥» node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ Γ¥» test/dashboard.test.tsx:41:19
+     39|     );
+     40|     
+     41|     expect(screen.getByText(/total expenses/i)).toBeInTheDocument();
+       |                   ^
+     42|     expect(screen.getByText(/recent transactions/i)).toBeInTheDocumentΓÇª
+     43|   });
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[1/4]ΓÄ»
+
+ FAIL  test/expenses.test.tsx > Expense Management > Expense List > renders expense list
+TestingLibraryElementError: Unable to find an element with the text: /expense history/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="space-y-8 animate-fade-in h-full flex flex-col"
+    >
+      <header
+        class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-border dark:border-border-dark pb-6"
+      >
+        <div>
+          <h2
+            class="text-3xl font-bold text-text-DEFAULT dark:text-text-dark tracking-tight"
+          >
+            Expenses
+          </h2>
+          <p
+            class="text-text-muted mt-1"
+          >
+            History of all transactions
+          </p>
+        </div>
+        <div
+          class="flex gap-2"
+        >
+          <div
+            class="relative flex-1 md:w-64 group"
+          >
+            <svg
+              aria-hidden="true"
+              class="lucide lucide-search absolute left-3 top-1/2 -translate-y-1/2 text-text-muted group-focus-within:text-primary transition-colors"
+              fill="none"
+              height="16"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m21 21-4.34-4.34"
+              />
+              <circle
+                cx="11"
+                cy="11"
+                r="8"
+              />
+            </svg>
+            <input
+              class="w-full pl-9 pr-4 py-2 rounded-md border border-border dark:border-border-dark bg-transparent text-text-DEFAULT dark:text-text-dark focus:ring-1 focus:ring-primary focus:border-primary focus:outline-none placeholder:text-text-muted/60 transition-all text-sm"
+              placeholder="Search merchant..."
+              type="text"
+              value=""
+            />
+          </div>
+          <button
+            class="inline-flex items-center justify-center rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] border border-border text-text-DEFAULT hover:bg-bg-subtle dark:border-border-dark dark:text-text-dark dark:hover:bg-bg-subtle-dark h-9 w-9 p-1.5 "
+            title="Export CSV"
+          >
+            <svg
+              aria-hidden="true"
+              class="lucide lucide-download"
+              fill="none"
+              height="16"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 15V3"
+              />
+              <path
+                d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+              />
+              <path
+                d="m7 10 5 5 5-5"
+              />
+            </svg>
+          </button>
+        </div>
+      </header>
+      <div
+        class="flex gap-2 overflow-x-auto pb-1 no-scrollbar"
+      >
+        <button
+          class="px-3 py-1 rounded-md text-xs font-medium whitespace-nowrap transition-colors border bg-transparent text-text-muted border-border dark:border-border-dark hover:bg-bg-subtle dark:hover:bg-bg-subtle-dark hover:text-text-DEFAULT"
+        >
+          All Time
+        </button>
+        <button
+          class="px-3 py-1 rounded-md text-xs font-medium whitespace-nowrap transition-colors border bg-transparent text-text-muted border-border dark:border-border-dark hover:bg-bg-subtle dark:hover:bg-bg-subtle-dark hover:text-text-DEFAULT"
+        >
+          This Month
+        </button>
+        <button
+          class="px-3 py-1 rounded-md text-xs font-medium whitespace-nowrap transition-colors border bg-transparent text-text-muted border-border dark:border-border-dark hover:bg-bg-subtle dark:hover:bg-bg-subtle-dark hover:text-text-DEFAULT"
+        >
+          Last Month
+        </button>
+      </div>
+      <div
+        class="flex-1 space-y-1"
+      >
+        <div
+          class="text-center py-20 border border-dashed border-border dark:border-border-dark rounded-lg"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-funnel text-text-muted mx-auto mb-3"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z"
+            />
+          </svg>
+          <h3
+            class="text-sm font-medium text-text-DEFAULT dark:text-text-dark"
+          >
+            No results
+          </h3>
+          <p
+            class="text-xs text-text-muted mt-1"
+          >
+            Try adjusting your filters.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+ Γ¥» Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ Γ¥» node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ Γ¥» node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ Γ¥» node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ Γ¥» test/expenses.test.tsx:66:21
+     64|       );
+     65|       
+     66|       expect(screen.getByText(/expense history/i)).toBeInTheDocument();
+       |                     ^
+     67|     });
+     68|   });
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[2/4]ΓÄ»
+
+ FAIL  test/expenses.test.tsx > Expense Management > Add Expense > handles AI receipt extraction
+TestingLibraryElementError: Unable to find a label with the text of: /upload receipt/i
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="max-w-xl mx-auto space-y-6 animate-fade-in pb-12"
+    >
+      <div
+        class="flex items-center gap-4 mb-4 md:mb-8"
+      >
+        <button
+          class="inline-flex items-center justify-center rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] hover:bg-bg-subtle text-text-muted hover:text-text-DEFAULT dark:hover:bg-bg-subtle-dark dark:text-text-dark h-9 w-9 p-1.5 "
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-arrow-left"
+            fill="none"
+            height="20"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m12 19-7-7 7-7"
+            />
+            <path
+              d="M19 12H5"
+            />
+          </svg>
+        </button>
+        <h2
+          class="text-2xl font-bold text-text-DEFAULT dark:text-text-dark"
+        >
+          New Entry
+        </h2>
+      </div>
+      <div
+        class="bg-bg-subtle dark:bg-bg-subtle-dark md:border border-border dark:border-border-dark p-4 md:p-8 rounded-lg transition-colors shadow-sm"
+      >
+        <form
+          class="space-y-6 md:space-y-8"
+        >
+          <div
+            class="space-y-2"
+          >
+            <label
+              class="block text-xs font-semibold uppercase tracking-wider text-text-muted"
+            >
+              Receipt
+            </label>
+            <div
+              class="border border-dashed border-border dark:border-border-dark bg-bg dark:bg-bg-dark rounded-md p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-[#e0e0e0] dark:hover:bg-[#2a2a2a] transition-colors group"
+            >
+              <div
+                class="bg-bg-subtle dark:bg-bg-subtle-dark p-3 rounded-full mb-3 group-hover:scale-110 transition-transform"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-camera text-text-muted"
+                  fill="none"
+                  height="20"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13.997 4a2 2 0 0 1 1.76 1.05l.486.9A2 2 0 0 0 18.003 7H20a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1.997a2 2 0 0 0 1.759-1.048l.489-.904A2 2 0 0 1 10.004 4z"
+                  />
+                  <circle
+                    cx="12"
+                    cy="13"
+                    r="3"
+                  />
+                </svg>
+              </div>
+              <p
+                class="text-sm text-text-muted font-medium"
+              >
+                Scan or Upload Receipt
+              </p>
+            </div>
+            <input
+              accept="image/*"
+              class="hidden"
+              type="file"
+            />
+          </div>
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 gap-6"
+          >
+            <div
+              class="space-y-1.5"
+            >
+              <label
+                class="block text-xs font-semibold uppercase tracking-wider text-text-muted"
+              >
+                Amount
+              </label>
+              <div
+                class="relative"
+              >
+                <span
+                  class="absolute left-0 top-1/2 -translate-y-1/2 text-text-muted font-light text-lg"
+                >
+                  Γé╣
+                </span>
+                <input
+                  class="w-full pl-6 py-2 bg-transparent border-b border-border dark:border-border-dark text-2xl font-light text-text-DEFAULT dark:text-text-dark focus:outline-none focus:border-primary rounded-none transition-colors placeholder:text-text-muted/30"
+                  name="amount"
+                  placeholder="0.00"
+                  required=""
+                  step="0.01"
+                  type="number"
+                  value=""
+                />
+              </div>
+            </div>
+            <div
+              class="space-y-1.5"
+            >
+              <label
+                class="block text-xs font-semibold uppercase tracking-wider text-text-muted dark:text-zinc-500"
+                for=":r2:"
+              >
+                Date
+              </label>
+              <div
+                class="relative group"
+              >
+                <input
+                  class="
+            w-full rounded-md border bg-transparent text-text-DEFAULT dark:text-text-dark
+            px-3 py-2
+            focus:outline-none focus:ring-1 focus:ring-primary foc...
+ Γ¥» Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ Γ¥» getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ Γ¥» node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ Γ¥» node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ Γ¥» test/expenses.test.tsx:113:28
+    111|       // Simulate file upload
+    112|       const file = new File(['(ΓîÉΓûí_Γûí)'], 'receipt.png', { type: 'image/ΓÇª
+    113|       const input = screen.getByLabelText(/upload receipt/i); // AdjusΓÇª
+       |                            ^
+    114|       
+    115|       // If label text isn't found, try finding by input type file dirΓÇª
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[3/4]ΓÄ»
+
+ FAIL  test/settings.test.tsx > Settings > renders settings form
+TestingLibraryElementError: Found multiple elements with the text: /profile/i
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+<h3
+  class="text-lg font-semibold text-text-DEFAULT dark:text-text-dark"
+>
+  Profile
+</h3>
+
+Ignored nodes: comments, script, style
+<h4
+  class="font-medium text-text-DEFAULT dark:text-text-dark"
+>
+  Profile Picture
+</h4>
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="max-w-2xl mx-auto space-y-12 animate-fade-in pb-12"
+    >
+      <header
+        class="border-b border-border dark:border-border-dark pb-6"
+      >
+        <h2
+          class="text-3xl font-bold text-text-DEFAULT dark:text-text-dark tracking-tight"
+        >
+          Settings
+        </h2>
+        <p
+          class="text-text-muted mt-1"
+        >
+          Manage your preferences and data
+        </p>
+      </header>
+      <section
+        class="space-y-6"
+      >
+        <div
+          class="flex items-center gap-3"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-user text-text-DEFAULT dark:text-text-dark"
+            fill="none"
+            height="20"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"
+            />
+            <circle
+              cx="12"
+              cy="7"
+              r="4"
+            />
+          </svg>
+          <h3
+            class="text-lg font-semibold text-text-DEFAULT dark:text-text-dark"
+          >
+            Profile
+          </h3>
+        </div>
+        <form
+          class="bg-bg-subtle dark:bg-bg-subtle-dark p-6 rounded-lg border border-border dark:border-border-dark space-y-6"
+        >
+          <div
+            class="flex items-center gap-6"
+          >
+            <div
+              class="relative group shrink-0"
+            >
+              <div
+                class="w-20 h-20 rounded-full overflow-hidden border-2 border-border dark:border-border-dark bg-bg dark:bg-bg-dark"
+              >
+                <div
+                  class="w-full h-full flex items-center justify-center text-text-muted bg-bg dark:bg-bg-dark"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-user"
+                    fill="none"
+                    height="32"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="32"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"
+                    />
+                    <circle
+                      cx="12"
+                      cy="7"
+                      r="4"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <button
+                class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity rounded-full text-white"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-upload"
+                  fill="none"
+                  height="20"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 3v12"
+                  />
+                  <path
+                    d="m17 8-5-5-5 5"
+                  />
+                  <path
+                    d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+                  />
+                </svg>
+              </button>
+              <input
+                accept="image/*"
+                class="hidden"
+                type="file"
+              />
+            </div>
+            <div>
+              <h4
+                class="font-medium text-text-DEFAULT dark:text-text-dark"
+              >
+                Profile Picture
+              </h4>
+              <p
+                class="text-xs text-text-muted mt-1"
+              >
+                Click image to upload new photo.
+              </p>
+            </div>
+          </div>
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-6"
+          >
+            <div
+              class="space-y-1.5"
+            >
+              <label
+                class="block text-xs font-semibold uppercase tracking-wider text-text-muted dark:text-zinc-500"
+                for=":r0:"
+              >
+                Display Name
+              </label>
+              <div
+                class="relative group"
+              >
+                <input[3...
+ Γ¥» Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ Γ¥» getElementError node_modules/@testing-library/dom/dist/query-helpers.js:20:35
+ Γ¥» getMultipleElementsFoundError node_modules/@testing-library/dom/dist/query-helpers.js:23:10
+ Γ¥» node_modules/@testing-library/dom/dist/query-helpers.js:55:13
+ Γ¥» node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ Γ¥» test/settings.test.tsx:41:19
+     39|     
+     40|     expect(screen.getByText(/settings/i)).toBeInTheDocument();
+     41|     expect(screen.getByText(/profile/i)).toBeInTheDocument();
+       |                   ^
+     42|   });
+     43| });
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[4/4]ΓÄ»
+
+
+[2m Test Files [22m [1m[31m3 failed[39m[22m[2m | [22m[1m[32m1 passed[39m[22m[90m (4)[39m
+[2m      Tests [22m [1m[31m4 failed[39m[22m[2m | [22m[1m[32m4 passed[39m[22m[90m (8)[39m
+[2m   Start at [22m 11:59:52
+[2m   Duration [22m 2.91s[2m (transform 809ms, setup 1.62s, import 2.50s, tests 866ms, environment 4.28s)[22m
+

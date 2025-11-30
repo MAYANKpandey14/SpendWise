@@ -6,10 +6,13 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   icon?: React.ReactNode;
 }
 
-export const Input: React.FC<InputProps> = ({ label, error, icon, className = '', ...props }) => {
+export const Input: React.FC<InputProps> = ({ label, error, icon, className = '', id, ...props }) => {
+  const generatedId = React.useId();
+  const inputId = id || generatedId;
+
   return (
     <div className="space-y-1.5">
-      {label && <label className="block text-xs font-semibold uppercase tracking-wider text-text-muted dark:text-zinc-500">{label}</label>}
+      {label && <label htmlFor={inputId} className="block text-xs font-semibold uppercase tracking-wider text-text-muted dark:text-zinc-500">{label}</label>}
       <div className="relative group">
         {icon && (
           <div className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted group-focus-within:text-primary transition-colors">
@@ -17,6 +20,7 @@ export const Input: React.FC<InputProps> = ({ label, error, icon, className = ''
           </div>
         )}
         <input 
+          id={inputId}
           className={`
             w-full rounded-md border bg-transparent text-text-DEFAULT dark:text-text-dark
             ${icon ? 'pl-10' : 'px-3'} py-2
