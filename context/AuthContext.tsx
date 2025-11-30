@@ -67,22 +67,35 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     console.log('Auth: Setting up auth state listener');
 
-    // Check session immediately to avoid flash if listener is slow
-    // But rely on listener for the main logic
-
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       console.log('Auth: onAuthStateChange', event, session?.user?.email);
 
-      // If we have a session, handle it (fetch profile, etc.)
-      if (session) {
-        await handleSession(session);
-      } else {
-        // If no session (signed out), clear user
-        setUser(null);
-      }
+      if (session?.user) {
+        // 1. Optimistic update: Set user immediately from session to unblock UI
+        // This ensures isLoading becomes false right away
+        setUser(prev => {
+          // If we already have a profile with this ID, keep it (don't overwrite with basic session data)
+          if (prev?.id === session.user.id) return prev;
 
-      console.log('Auth: onAuthStateChange complete - setting isLoading false');
-      setIsLoading(false);
+          return {
+            id: session.user.id,
+            email: session.user.email || '',
+            name: session.user.user_metadata?.full_name || 'User',
+            avatar: session.user.user_metadata?.avatar_url,
+            currency: 'INR',
+            locale: 'en-US'
+          };
+        });
+
+        setIsLoading(false);
+
+        // 2. Fetch full profile in background
+        handleSession(session);
+      } else {
+        // Signed out
+        setUser(null);
+        setIsLoading(false);
+      }
     });
 
     return () => {
