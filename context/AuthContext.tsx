@@ -32,7 +32,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       try {
         console.debug('Auth: starting getSession()');
         // Cast to any to bypass SupabaseAuthClient type issues and guard nested data
-        const sessionResp = await (supabase.auth as any).getSession();
+        const sessionResp = await supabase.auth.getSession();
         console.debug('Auth: getSession() resolved', sessionResp);
         const session = sessionResp?.data?.session;
 
@@ -66,7 +66,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     // Listen for changes
     // Cast to any to bypass SupabaseAuthClient type issues and guard return shape
-    const onAuth = (supabase.auth as any).onAuthStateChange(async (event: any, session: any) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       try {
         if (event === 'SIGNED_IN' && session?.user) {
            setIsLoading(true);
@@ -96,11 +96,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
     });
 
-    const subscription = onAuth?.data?.subscription;
     return () => {
-      if (subscription && typeof subscription.unsubscribe === 'function') {
-        subscription.unsubscribe();
-      }
+      subscription.unsubscribe();
     };
   }, []);
 
@@ -109,7 +106,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setIsLoading(true);
     try {
       // Cast to any to bypass SupabaseAuthClient type issues
-      const resp = await (supabase.auth as any).signInWithPassword({
+      const resp = await supabase.auth.signInWithPassword({
         email,
         password,
       });
@@ -145,7 +142,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setIsLoading(true);
     try {
       // Cast to any to bypass SupabaseAuthClient type issues
-      const resp = await (supabase.auth as any).signUp({
+      const resp = await supabase.auth.signUp({
         email,
         password,
         options: {
@@ -184,7 +181,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setIsLoading(true);
     try {
       // Cast to any to bypass SupabaseAuthClient type issues
-      const resp = await (supabase.auth as any).signInWithOAuth({
+      const resp = await supabase.auth.signInWithOAuth({
         provider: 'google',
       });
 
@@ -198,7 +195,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const logout = async () => {
     // Cast to any to bypass SupabaseAuthClient type issues
-    await (supabase.auth as any).signOut();
+    await supabase.auth.signOut();
     setUser(null);
   };
 
