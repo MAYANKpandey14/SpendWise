@@ -94,7 +94,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     };
 
     loadData();
-  }, [user]);
+  }, [user?.id]); // Changed dependency to user?.id to prevent unnecessary re-fetches
 
   // Process Sync Queue
   const processSyncQueue = useCallback(async () => {

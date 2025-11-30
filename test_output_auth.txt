@@ -1,0 +1,1223 @@
+
+> spendwise---ai-expense-tracker@0.0.0 test
+> vitest test/auth.test.tsx
+
+
+[1m[44m DEV [49m[22m [34mv4.0.14 [39m[90mD:/Backup/OneDrive - Moradabad Institute Of Technology/Desktop/Manu/Projects/SpendWise[39m
+
+[90mstdout[2m | test/auth.test.tsx[2m > [22m[2mAuthentication[2m > [22m[2mLogin Page[2m > [22m[2mrenders login form correctly
+[22m[39mLogin: render { isLoading: [33mtrue[39m, email: [32m''[39m, password: [32m''[39m }
+Button: render {
+  children: [32m'Sign in with Email'[39m,
+  disabled: [90mundefined[39m,
+  isLoading: [33mtrue[39m
+}
+
+stderr | test/auth.test.tsx > Authentication > Login Page > renders login form correctly
+ΓÜá∩╕Å React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+ΓÜá∩╕Å React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+[90mstdout[2m | test/auth.test.tsx[2m > [22m[2mAuthentication[2m > [22m[2mLogin Page[2m > [22m[2mcalls login function on submit
+[22m[39mLogin: render { isLoading: [33mtrue[39m, email: [32m''[39m, password: [32m''[39m }
+Button: render {
+  children: [32m'Sign in with Email'[39m,
+  disabled: [90mundefined[39m,
+  isLoading: [33mtrue[39m
+}
+Login: render { isLoading: [33mtrue[39m, email: [32m'test@example.com'[39m, password: [32m''[39m }
+Button: render {
+  children: [32m'Sign in with Email'[39m,
+  disabled: [90mundefined[39m,
+  isLoading: [33mtrue[39m
+}
+Login: render { isLoading: [33mtrue[39m, email: [32m'test@example.com'[39m, password: [32m'password123'[39m }
+Button: render {
+  children: [32m'Sign in with Email'[39m,
+  disabled: [90mundefined[39m,
+  isLoading: [33mtrue[39m
+}
+
+ [31mΓ¥»[39m test/auth.test.tsx [2m([22m[2m4 tests[22m[2m | [22m[31m2 failed[39m[2m)[22m[33m 2371[2mms[22m[39m
+       [32mΓ£ô[39m renders login form correctly[32m 235[2mms[22m[39m
+[31m       [31m├ù[31m calls login function on submit[39m[33m 1096[2mms[22m[39m
+       [32mΓ£ô[39m renders forgot password form[32m 6[2mms[22m[39m
+[31m       [31m├ù[31m calls resetPassword function on submit[39m[33m 1033[2mms[22m[39m
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ» Failed Tests 2 ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+
+ FAIL  test/auth.test.tsx > Authentication > Login Page > calls login function on submit
+AssertionError: expected "vi.fn()" to be called with arguments: [ { email: 'test@example.com', ΓÇª(1) } ]
+
+Number of calls: 0
+
+
+Ignored nodes: comments, script, style
+<html>
+  <head />
+  <body>
+    <div>
+      <div
+        class="min-h-screen flex items-center justify-center p-4 bg-bg text-text-DEFAULT dark:bg-bg-dark dark:text-text-dark transition-colors duration-200 font-sans"
+      >
+        <div
+          class="w-full max-w-sm space-y-8 animate-fade-in"
+        >
+          <div
+            class="text-center space-y-2"
+          >
+            <div
+              class="w-10 h-10 bg-primary rounded-md mx-auto flex items-center justify-center text-white font-bold text-lg mb-4 shadow-sm"
+            >
+              S
+            </div>
+            <h2
+              class="text-2xl font-bold tracking-tight"
+            >
+              Welcome back
+            </h2>
+            <p
+              class="text-sm text-text-muted"
+            >
+              Enter your credentials to access your workspace
+            </p>
+          </div>
+          <form
+            class="space-y-5"
+          >
+            <div
+              class="space-y-1.5"
+            >
+              <label
+                class="block text-xs font-semibold uppercase tracking-wider text-text-muted dark:text-zinc-500"
+                for=":r2:"
+              >
+                Email
+              </label>
+              <div
+                class="relative group"
+              >
+                <div
+                  class="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted group-focus-within:text-primary transition-colors"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-mail"
+                    fill="none"
+                    height="16"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="16"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"
+                    />
+                    <rect
+                      height="16"
+                      rx="2"
+                      width="20"
+                      x="2"
+                      y="4"
+                    />
+                  </svg>
+                </div>
+                <input
+                  class="
+            w-full rounded-md border bg-transparent text-text-DEFAULT dark:text-text-dark
+            pl-10 py-2
+            focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary
+            disabled:opacity-50 disabled:cursor-not-allowed
+            placeholder:text-text-muted/60 dark:placeholder:text-zinc-600
+            transition-all duration-200 shadow-sm
+            border-border dark:border-border-dark group-hover:border-zinc-400 dark:group-hover:border-zinc-600
+            
+          "
+                  id=":r2:"
+                  placeholder="name@example.com"
+                  required=""
+                  type="email"
+                  value="test@example.com"
+                />
+              </div>
+            </div>
+            <div
+              class="space-y-1"
+            >
+              <div
+                class="space-y-1.5"
+              >
+                <label
+                  class="block text-xs font-semibold uppercase tracking-wider text-text-muted dark:text-zinc-500"
+                  for=":r3:"
+                >
+                  Password
+                </label>
+                <div
+                  class="relative group"
+                >
+                  <div
+                    class="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted group-focus-within:text-primary transition-colors"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="lucide lucide-lock"
+                      fill="none"
+                      height="16"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="16"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        height="11"
+                        rx="2"
+                        ry="2"
+                        width="18"
+                        x="3"
+                        y="11"
+                      />
+                      <path
+                        d="M7 11V7a5 5 0 0 1 10 0v4"
+                      />
+                    </svg>
+                  </div>
+                  <input
+                    class="
+            w-full rounded-md border bg-transparent text-text-DEFAULT dark:text-text-dark
+            pl-10 py-2
+            focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary
+            disabled:opacity-50 disabled:cursor-not-allowed
+            placeholder:text-text-muted/60 dark:placeholder:text-zinc-600
+            transition-all duration-200 shadow-sm
+            border-border dark:border-border-dark group-hover:border-zinc-400 dark:group-hover:border-zinc-600
+            
+          "
+                    id=":r3:"
+                    placeholder="ΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó"
+                    required=""
+                    type="password"
+                    value="password123"
+                  />
+                </div>
+              </div>
+              <div
+                class="flex justify-end"
+              >
+                <a
+                  class="text-xs text-text-muted hover:text-primary transition-colors"
+                  href="/forgot-password"
+                >
+                  Forgot password?
+                </a>
+              </div>
+            </div>
+            <button
+              class="inline-flex items-center justify-center rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] bg-[#2383e2] text-white hover:bg-[#1a6ebd] shadow-sm dark:bg-[#2383e2] dark:hover:bg-[#318ef0] h-11 px-6 text-base w-full"
+              disabled=""
+              type="submit"
+            >
+              <svg
+                class="animate-spin -ml-1 mr-2 h-4 w-4 text-current"
+                fill="none"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                />
+                <path
+                  class="opacity-75"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  fill="currentColor"
+                />
+              </svg>
+              Sign in with Email
+            </button>
+          </form>
+          <div
+            class="relative"
+          >
+            <div
+              class="absolute inset-0 flex items-center"
+            >
+              <div
+                class="w-full border-t border-border dark:border-border-dark"
+              />
+            </div>
+            <div
+              class="relative flex justify-center text-xs uppercase tracking-wide"
+            >
+              <span
+                class="px-2 bg-bg dark:bg-bg-dark text-text-muted"
+              >
+                Or continue with
+              </span>
+            </div>
+          </div>
+          <button
+            class="inline-flex items-center justify-center rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] border border-border text-text-DEFAULT hover:bg-bg-subtle dark:border-border-dark dark:text-text-dark dark:hover:bg-bg-subtle-dark h-9 px-3 text-sm w-full relative bg-white dark:bg-transparent text-black dark:text-white"
+            disabled=""
+          >
+            <svg
+              class="animate-spin -ml-1 mr-2 h-4 w-4 text-current"
+              fill="none"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              />
+              <path
+                class="opacity-75"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                fill="currentColor"
+              />
+            </svg>
+            <div
+              class="absolute left-4 top-1/2 -translate-y-1/2 flex items-center"
+            >
+              <svg
+                class="h-4 w-4"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                  fill="#4285F4"
+                />
+                <path
+                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                  fill="#34A853"
+                />
+                <path
+                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                  fill="#FBBC05"
+                />
+                <path
+                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                  fill="#EA4335"
+                />
+              </svg>
+            </div>
+            <span
+              class="ml-4"
+            >
+              Google
+            </span>
+          </button>
+          <p
+            class="text-center text-sm text-text-muted"
+          >
+            Don't have an account?
+             
+            <a
+              class="font-medium text-text-DEFAULT dark:text-text-dark hover:underline underline-offset-4 decoration-primary/50"
+              href="/signup"
+            >
+              Sign up
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+ Γ¥» test/auth.test.tsx:91:40
+     89| 
+     90|       await waitFor(() => {
+     91|         expect(mockSignInWithPassword).toHaveBeenCalledWith({
+       |                                        ^
+     92|           email: 'test@example.com',
+     93|           password: 'password123',
+ Γ¥» runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ Γ¥» checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ Γ¥» Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[1/2]ΓÄ»
+
+ FAIL  test/auth.test.tsx > Authentication > ForgotPassword Page > calls resetPassword function on submit
+AssertionError: expected "vi.fn()" to be called with arguments: [ 'test@example.com', Any<Object> ]
+
+Number of calls: 0
+
+
+Ignored nodes: comments, script, style
+<html>
+  <head />
+  <body>
+    <div>
+      <div
+        class="min-h-screen flex items-center justify-center p-4 bg-bg text-text-DEFAULT dark:bg-bg-dark dark:text-text-dark transition-colors duration-200 font-sans"
+      >
+        <div
+          class="w-full max-w-sm space-y-8 animate-fade-in"
+        >
+          <div
+            class="space-y-2"
+          >
+            <a
+              class="inline-flex items-center text-sm text-text-muted hover:text-primary transition-colors mb-4"
+              href="/login"
+            >
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-arrow-left mr-1"
+                fill="none"
+                height="16"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m12 19-7-7 7-7"
+                />
+                <path
+                  d="M19 12H5"
+                />
+              </svg>
+               Back to Login
+            </a>
+            <h2
+              class="text-2xl font-bold tracking-tight"
+            >
+              Reset Password
+            </h2>
+            <p
+              class="text-sm text-text-muted"
+            >
+              Enter your email address and we'll send you a link to reset your password.
+            </p>
+          </div>
+          <form
+            class="space-y-5"
+          >
+            <div
+              class="space-y-1.5"
+            >
+              <label
+                class="block text-xs font-semibold uppercase tracking-wider text-text-muted dark:text-zinc-500"
+                for=":r5:"
+              >
+                Email
+              </label>
+              <div
+                class="relative group"
+              >
+                <div
+                  class="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted group-focus-within:text-primary transition-colors"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-mail"
+                    fill="none"
+                    height="16"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="16"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"
+                    />
+                    <rect
+                      height="16"
+                      rx="2"
+                      width="20"
+                      x="2"
+                      y="4"
+                    />
+                  </svg>
+                </div>
+                <input
+                  class="
+            w-full rounded-md border bg-transparent text-text-DEFAULT dark:text-text-dark
+            pl-10 py-2
+            focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary
+            disabled:opacity-50 disabled:cursor-not-allowed
+            placeholder:text-text-muted/60 dark:placeholder:text-zinc-600
+            transition-all duration-200 shadow-sm
+            border-border dark:border-border-dark group-hover:border-zinc-400 dark:group-hover:border-zinc-600
+            
+          "
+                  id=":r5:"
+                  placeholder="name@example.com"
+                  required=""
+                  type="email"
+                  value="test@example.com"
+                />
+              </div>
+            </div>
+            <button
+              class="inline-flex items-center justify-center rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] bg-[#2383e2] text-white hover:bg-[#1a6ebd] shadow-sm dark:bg-[#2383e2] dark:hover:bg-[#318ef0] h-11 px-6 text-base w-full"
+              disabled=""
+              type="submit"
+            >
+              <svg
+                class="animate-spin -ml-1 mr-2 h-4 w-4 text-current"
+                fill="none"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                />
+                <path
+                  class="opacity-75"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  fill="currentColor"
+                />
+              </svg>
+              Send Reset Link
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+ Γ¥» test/auth.test.tsx:130:43
+    128| 
+    129|       await waitFor(() => {
+    130|         expect(mockResetPasswordForEmail).toHaveBeenCalledWith('test@eΓÇª
+       |                                           ^
+    131|       });
+    132|     });
+ Γ¥» runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ Γ¥» checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ Γ¥» Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[2/2]ΓÄ»
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m2 failed[39m[22m[2m | [22m[1m[32m2 passed[39m[22m[90m (4)[39m
+[2m   Start at [22m 15:48:44
+[2m   Duration [22m 3.52s[2m (transform 136ms, setup 159ms, import 295ms, tests 2.37s, environment 546ms)[22m
+
+[1m[41m FAIL [49m[22m [31mTests failed. Watching for file changes...[39m
+       [2mpress [22m[1mh[22m[2m to show help[22m[2m, [22m[2mpress [22m[1mq[22m[2m to quit[22m
+c[3J[1m[44m RERUN [49m[22m [34m[2mrerun all tests [22m[39m
+
+stderr | test/expenses.test.tsx > Expense Management > Expense List > renders expense list
+ΓÜá∩╕Å React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+ΓÜá∩╕Å React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+ [32mΓ£ô[39m test/expenses.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 146[2mms[22m[39m
+[90mstdout[2m | test/auth.test.tsx[2m > [22m[2mAuthentication[2m > [22m[2mLogin Page[2m > [22m[2mrenders login form correctly
+[22m[39mLogin: render { isLoading: [33mtrue[39m, email: [32m''[39m, password: [32m''[39m }
+Button: render {
+  children: [32m'Sign in with Email'[39m,
+  disabled: [90mundefined[39m,
+  isLoading: [33mtrue[39m
+}
+
+stderr | test/auth.test.tsx > Authentication > Login Page > renders login form correctly
+ΓÜá∩╕Å React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+ΓÜá∩╕Å React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+[90mstdout[2m | test/auth.test.tsx[2m > [22m[2mAuthentication[2m > [22m[2mLogin Page[2m > [22m[2mcalls login function on submit
+[22m[39mLogin: render { isLoading: [33mtrue[39m, email: [32m''[39m, password: [32m''[39m }
+Button: render {
+  children: [32m'Sign in with Email'[39m,
+  disabled: [90mundefined[39m,
+  isLoading: [33mtrue[39m
+}
+Login: render { isLoading: [33mtrue[39m, email: [32m'test@example.com'[39m, password: [32m''[39m }
+Button: render {
+  children: [32m'Sign in with Email'[39m,
+  disabled: [90mundefined[39m,
+  isLoading: [33mtrue[39m
+}
+Login: render { isLoading: [33mtrue[39m, email: [32m'test@example.com'[39m, password: [32m'password123'[39m }
+Button: render {
+  children: [32m'Sign in with Email'[39m,
+  disabled: [90mundefined[39m,
+  isLoading: [33mtrue[39m
+}
+
+[90mstdout[2m | test/currency_conversion.test.tsx[2m > [22m[2mCurrency Conversion Flow[2m > [22m[2mextracts USD from receipt and converts to INR on dashboard
+[22m[39mAuth: onAuthStateChange SIGNED_IN test@example.com
+
+stderr | test/currency_conversion.test.tsx > Currency Conversion Flow > extracts USD from receipt and converts to INR on dashboard
+ΓÜá∩╕Å React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+ΓÜá∩╕Å React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+[90mstdout[2m | test/currency_conversion.test.tsx[2m > [22m[2mCurrency Conversion Flow[2m > [22m[2mextracts USD from receipt and converts to INR on dashboard
+[22m[39mfetchExpensesFromDb: starting
+
+stderr | test/dashboard.test.tsx > Dashboard > renders dashboard components
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+ΓÜá∩╕Å React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+ΓÜá∩╕Å React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+
+ [32mΓ£ô[39m test/dashboard.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 105[2mms[22m[39m
+stderr | test/currency_conversion.test.tsx > Currency Conversion Flow > extracts USD from receipt and converts to INR on dashboard
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+
+[90mstdout[2m | test/currency_conversion.test.tsx[2m > [22m[2mCurrency Conversion Flow[2m > [22m[2mextracts USD from receipt and converts to INR on dashboard
+[22m[39mAuth: onAuthStateChange SIGNED_IN test@example.com
+
+stderr | test/currency_conversion.test.tsx > Currency Conversion Flow > extracts USD from receipt and converts to INR on dashboard
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+
+[90mstdout[2m | test/currency_conversion.test.tsx[2m > [22m[2mCurrency Conversion Flow[2m > [22m[2mextracts USD from receipt and converts to INR on dashboard
+[22m[39mfetchExpensesFromDb: starting
+
+stderr | test/currency_conversion.test.tsx > Currency Conversion Flow > extracts USD from receipt and converts to INR on dashboard
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+
+stderr | test/currency_conversion.test.tsx > Currency Conversion Flow > extracts USD from receipt and converts to INR on dashboard
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+
+stderr | test/currency_conversion.test.tsx > Currency Conversion Flow > extracts USD from receipt and converts to INR on dashboard
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+
+stderr | test/currency_conversion.test.tsx > Currency Conversion Flow > extracts USD from receipt and converts to INR on dashboard
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+The width(0) and height(0) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width.
+
+ [32mΓ£ô[39m test/currency_conversion.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 199[2mms[22m[39m
+stderr | test/settings.test.tsx > Settings > renders settings form
+ΓÜá∩╕Å React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+ΓÜá∩╕Å React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+ [32mΓ£ô[39m test/settings.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 183[2mms[22m[39m
+ [31mΓ¥»[39m test/auth.test.tsx [2m([22m[2m4 tests[22m[2m | [22m[31m2 failed[39m[2m)[22m[33m 2547[2mms[22m[39m
+       [33m[2mΓ£ô[22m[39m renders login form correctly [33m 337[2mms[22m[39m
+[31m       [31m├ù[31m calls login function on submit[39m[33m 1142[2mms[22m[39m
+       [32mΓ£ô[39m renders forgot password form[32m 9[2mms[22m[39m
+[31m       [31m├ù[31m calls resetPassword function on submit[39m[33m 1057[2mms[22m[39m
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ» Failed Tests 2 ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+
+ FAIL  test/auth.test.tsx > Authentication > Login Page > calls login function on submit
+AssertionError: expected "vi.fn()" to be called with arguments: [ { email: 'test@example.com', ΓÇª(1) } ]
+
+Number of calls: 0
+
+
+Ignored nodes: comments, script, style
+<html>
+  <head />
+  <body>
+    <div>
+      <div
+        class="min-h-screen flex items-center justify-center p-4 bg-bg text-text-DEFAULT dark:bg-bg-dark dark:text-text-dark transition-colors duration-200 font-sans"
+      >
+        <div
+          class="w-full max-w-sm space-y-8 animate-fade-in"
+        >
+          <div
+            class="text-center space-y-2"
+          >
+            <div
+              class="w-10 h-10 bg-primary rounded-md mx-auto flex items-center justify-center text-white font-bold text-lg mb-4 shadow-sm"
+            >
+              S
+            </div>
+            <h2
+              class="text-2xl font-bold tracking-tight"
+            >
+              Welcome back
+            </h2>
+            <p
+              class="text-sm text-text-muted"
+            >
+              Enter your credentials to access your workspace
+            </p>
+          </div>
+          <form
+            class="space-y-5"
+          >
+            <div
+              class="space-y-1.5"
+            >
+              <label
+                class="block text-xs font-semibold uppercase tracking-wider text-text-muted dark:text-zinc-500"
+                for=":r2:"
+              >
+                Email
+              </label>
+              <div
+                class="relative group"
+              >
+                <div
+                  class="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted group-focus-within:text-primary transition-colors"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-mail"
+                    fill="none"
+                    height="16"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="16"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"
+                    />
+                    <rect
+                      height="16"
+                      rx="2"
+                      width="20"
+                      x="2"
+                      y="4"
+                    />
+                  </svg>
+                </div>
+                <input
+                  class="
+            w-full rounded-md border bg-transparent text-text-DEFAULT dark:text-text-dark
+            pl-10 py-2
+            focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary
+            disabled:opacity-50 disabled:cursor-not-allowed
+            placeholder:text-text-muted/60 dark:placeholder:text-zinc-600
+            transition-all duration-200 shadow-sm
+            border-border dark:border-border-dark group-hover:border-zinc-400 dark:group-hover:border-zinc-600
+            
+          "
+                  id=":r2:"
+                  placeholder="name@example.com"
+                  required=""
+                  type="email"
+                  value="test@example.com"
+                />
+              </div>
+            </div>
+            <div
+              class="space-y-1"
+            >
+              <div
+                class="space-y-1.5"
+              >
+                <label
+                  class="block text-xs font-semibold uppercase tracking-wider text-text-muted dark:text-zinc-500"
+                  for=":r3:"
+                >
+                  Password
+                </label>
+                <div
+                  class="relative group"
+                >
+                  <div
+                    class="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted group-focus-within:text-primary transition-colors"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="lucide lucide-lock"
+                      fill="none"
+                      height="16"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="16"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        height="11"
+                        rx="2"
+                        ry="2"
+                        width="18"
+                        x="3"
+                        y="11"
+                      />
+                      <path
+                        d="M7 11V7a5 5 0 0 1 10 0v4"
+                      />
+                    </svg>
+                  </div>
+                  <input
+                    class="
+            w-full rounded-md border bg-transparent text-text-DEFAULT dark:text-text-dark
+            pl-10 py-2
+            focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary
+            disabled:opacity-50 disabled:cursor-not-allowed
+            placeholder:text-text-muted/60 dark:placeholder:text-zinc-600
+            transition-all duration-200 shadow-sm
+            border-border dark:border-border-dark group-hover:border-zinc-400 dark:group-hover:border-zinc-600
+            
+          "
+                    id=":r3:"
+                    placeholder="ΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇóΓÇó"
+                    required=""
+                    type="password"
+                    value="password123"
+                  />
+                </div>
+              </div>
+              <div
+                class="flex justify-end"
+              >
+                <a
+                  class="text-xs text-text-muted hover:text-primary transition-colors"
+                  href="/forgot-password"
+                >
+                  Forgot password?
+                </a>
+              </div>
+            </div>
+            <button
+              class="inline-flex items-center justify-center rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] bg-[#2383e2] text-white hover:bg-[#1a6ebd] shadow-sm dark:bg-[#2383e2] dark:hover:bg-[#318ef0] h-11 px-6 text-base w-full"
+              disabled=""
+              type="submit"
+            >
+              <svg
+                class="animate-spin -ml-1 mr-2 h-4 w-4 text-current"
+                fill="none"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                />
+                <path
+                  class="opacity-75"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  fill="currentColor"
+                />
+              </svg>
+              Sign in with Email
+            </button>
+          </form>
+          <div
+            class="relative"
+          >
+            <div
+              class="absolute inset-0 flex items-center"
+            >
+              <div
+                class="w-full border-t border-border dark:border-border-dark"
+              />
+            </div>
+            <div
+              class="relative flex justify-center text-xs uppercase tracking-wide"
+            >
+              <span
+                class="px-2 bg-bg dark:bg-bg-dark text-text-muted"
+              >
+                Or continue with
+              </span>
+            </div>
+          </div>
+          <button
+            class="inline-flex items-center justify-center rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] border border-border text-text-DEFAULT hover:bg-bg-subtle dark:border-border-dark dark:text-text-dark dark:hover:bg-bg-subtle-dark h-9 px-3 text-sm w-full relative bg-white dark:bg-transparent text-black dark:text-white"
+            disabled=""
+          >
+            <svg
+              class="animate-spin -ml-1 mr-2 h-4 w-4 text-current"
+              fill="none"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              />
+              <path
+                class="opacity-75"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                fill="currentColor"
+              />
+            </svg>
+            <div
+              class="absolute left-4 top-1/2 -translate-y-1/2 flex items-center"
+            >
+              <svg
+                class="h-4 w-4"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                  fill="#4285F4"
+                />
+                <path
+                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                  fill="#34A853"
+                />
+                <path
+                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                  fill="#FBBC05"
+                />
+                <path
+                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                  fill="#EA4335"
+                />
+              </svg>
+            </div>
+            <span
+              class="ml-4"
+            >
+              Google
+            </span>
+          </button>
+          <p
+            class="text-center text-sm text-text-muted"
+          >
+            Don't have an account?
+             
+            <a
+              class="font-medium text-text-DEFAULT dark:text-text-dark hover:underline underline-offset-4 decoration-primary/50"
+              href="/signup"
+            >
+              Sign up
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+ Γ¥» test/auth.test.tsx:91:40
+     89| 
+     90|       await waitFor(() => {
+     91|         expect(mockSignInWithPassword).toHaveBeenCalledWith({
+       |                                        ^
+     92|           email: 'test@example.com',
+     93|           password: 'password123',
+ Γ¥» runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ Γ¥» checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ Γ¥» Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[1/2]ΓÄ»
+
+ FAIL  test/auth.test.tsx > Authentication > ForgotPassword Page > calls resetPassword function on submit
+AssertionError: expected "vi.fn()" to be called with arguments: [ 'test@example.com', Any<Object> ]
+
+Number of calls: 0
+
+
+Ignored nodes: comments, script, style
+<html>
+  <head />
+  <body>
+    <div>
+      <div
+        class="min-h-screen flex items-center justify-center p-4 bg-bg text-text-DEFAULT dark:bg-bg-dark dark:text-text-dark transition-colors duration-200 font-sans"
+      >
+        <div
+          class="w-full max-w-sm space-y-8 animate-fade-in"
+        >
+          <div
+            class="space-y-2"
+          >
+            <a
+              class="inline-flex items-center text-sm text-text-muted hover:text-primary transition-colors mb-4"
+              href="/login"
+            >
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-arrow-left mr-1"
+                fill="none"
+                height="16"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m12 19-7-7 7-7"
+                />
+                <path
+                  d="M19 12H5"
+                />
+              </svg>
+               Back to Login
+            </a>
+            <h2
+              class="text-2xl font-bold tracking-tight"
+            >
+              Reset Password
+            </h2>
+            <p
+              class="text-sm text-text-muted"
+            >
+              Enter your email address and we'll send you a link to reset your password.
+            </p>
+          </div>
+          <form
+            class="space-y-5"
+          >
+            <div
+              class="space-y-1.5"
+            >
+              <label
+                class="block text-xs font-semibold uppercase tracking-wider text-text-muted dark:text-zinc-500"
+                for=":r5:"
+              >
+                Email
+              </label>
+              <div
+                class="relative group"
+              >
+                <div
+                  class="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted group-focus-within:text-primary transition-colors"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-mail"
+                    fill="none"
+                    height="16"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="16"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"
+                    />
+                    <rect
+                      height="16"
+                      rx="2"
+                      width="20"
+                      x="2"
+                      y="4"
+                    />
+                  </svg>
+                </div>
+                <input
+                  class="
+            w-full rounded-md border bg-transparent text-text-DEFAULT dark:text-text-dark
+            pl-10 py-2
+            focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary
+            disabled:opacity-50 disabled:cursor-not-allowed
+            placeholder:text-text-muted/60 dark:placeholder:text-zinc-600
+            transition-all duration-200 shadow-sm
+            border-border dark:border-border-dark group-hover:border-zinc-400 dark:group-hover:border-zinc-600
+            
+          "
+                  id=":r5:"
+                  placeholder="name@example.com"
+                  required=""
+                  type="email"
+                  value="test@example.com"
+                />
+              </div>
+            </div>
+            <button
+              class="inline-flex items-center justify-center rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] bg-[#2383e2] text-white hover:bg-[#1a6ebd] shadow-sm dark:bg-[#2383e2] dark:hover:bg-[#318ef0] h-11 px-6 text-base w-full"
+              disabled=""
+              type="submit"
+            >
+              <svg
+                class="animate-spin -ml-1 mr-2 h-4 w-4 text-current"
+                fill="none"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                />
+                <path
+                  class="opacity-75"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  fill="currentColor"
+                />
+              </svg>
+              Send Reset Link
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+ Γ¥» test/auth.test.tsx:130:43
+    128| 
+    129|       await waitFor(() => {
+    130|         expect(mockResetPasswordForEmail).toHaveBeenCalledWith('test@eΓÇª
+       |                                           ^
+    131|       });
+    132|     });
+ Γ¥» runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ Γ¥» checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ Γ¥» Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[2/2]ΓÄ»
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m4 passed[39m[22m[90m (5)[39m
+[2m      Tests [22m [1m[31m2 failed[39m[22m[2m | [22m[1m[32m8 passed[39m[22m[90m (10)[39m
+[2m   Start at [22m 15:49:00
+[2m   Duration [22m 6.93s
+
+[1m[41m FAIL [49m[22m [31mTests failed. Watching for file changes...[39m
+       [2mpress [22m[1mh[22m[2m to show help[22m[2m, [22m[2mpress [22m[1mq[22m[2m to quit[22m
+[31mCancelling test run. Press CTRL+c again to exit forcefully.
+[39m

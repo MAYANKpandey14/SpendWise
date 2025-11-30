@@ -33,6 +33,10 @@ export const Button: React.FC<ButtonProps> = ({
     icon: "h-9 w-9 p-1.5"
   };
 
+  if (typeof children === 'string' && children.includes('Sign in')) {
+      console.log('Button: render', { children, disabled, isLoading });
+  }
+
   return (
     <button 
       className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}

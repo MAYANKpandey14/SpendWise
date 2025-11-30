@@ -6,7 +6,7 @@ import { Database } from '../types/supabase';
 type ProfileRow = Database['public']['Tables']['profiles']['Row'];
 type ProfileUpdate = Database['public']['Tables']['profiles']['Update'];
 
-export const getUserProfile = async (userId: string): Promise<User | null> => {
+export const getUserProfile = async (userId: string, user?: User | any): Promise<User | null> => {
   const { data, error } = await supabase
     .from('profiles')
     .select('*')
@@ -21,17 +21,20 @@ export const getUserProfile = async (userId: string): Promise<User | null> => {
     return null;
   }
 
-  // Fetch the email from the auth session since it's not in the public profile
-  // Cast to any to bypass SupabaseAuthClient type issues
-  const userResp = await (supabase.auth as any).getUser();
-  const user = userResp?.data?.user;
+  // If user object is not provided, fetch it (fallback)
+  // This optimization prevents a blocking network call when we already have the session
+  let authUser = user;
+  if (!authUser) {
+      const userResp = await (supabase.auth as any).getUser();
+      authUser = userResp?.data?.user;
+  }
 
   if (!data) return null;
 
   return {
     id: data.id,
     name: data.name || '',
-    email: user?.email || '',
+    email: authUser?.email || '',
     avatar: data.avatar || undefined,
     currency: data.currency || 'INR',
     locale: data.locale || 'en-US'

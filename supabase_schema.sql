@@ -13,7 +13,7 @@ create table public.profiles (
 
 -- Expenses table
 create table public.expenses (
-  id uuid default uuid_generate_v4() primary key,
+  id text primary key,
   user_id uuid references public.profiles(id) on delete cascade not null,
   amount numeric not null,
   currency text not null,
