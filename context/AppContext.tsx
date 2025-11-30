@@ -38,15 +38,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   // Initial Filter State
   const initialFilters: FilterState = {
-    startDate: new Date(new Date().getFullYear(), new Date().getMonth(), 1).toISOString().split('T')[0], // First day of current month
-    endDate: new Date().toISOString().split('T')[0],
+    startDate: '', // Default to All Time
+    endDate: '',
     categoryIds: [],
     searchQuery: '',
   };
 
   const [filters, setFilters] = useState<FilterState>(initialFilters);
-
-  // Load Sync Queue from LocalStorage
   useEffect(() => {
     const storedQueue = localStorage.getItem('spendwise_sync_queue');
     if (storedQueue) {
@@ -110,11 +108,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     for (const op of newQueue) {
       try {
         if (op.type === 'ADD') {
-           await createExpenseInDb(op.payload);
+          await createExpenseInDb(op.payload);
         } else if (op.type === 'UPDATE') {
-           await updateExpenseInDb(op.payload);
+          await updateExpenseInDb(op.payload);
         } else if (op.type === 'DELETE') {
-           await deleteExpenseInDb(op.id);
+          await deleteExpenseInDb(op.id);
         }
         successfulIds.push(op.id + op.type + op.timestamp); // Unique identifier for operation
       } catch (error) {
@@ -126,9 +124,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
     // Remove successful operations from queue
     if (successfulIds.length > 0) {
-        setSyncQueue(prev => prev.filter(op => !successfulIds.includes(op.id + op.type + op.timestamp)));
+      setSyncQueue(prev => prev.filter(op => !successfulIds.includes(op.id + op.type + op.timestamp)));
     }
-    
+
     setIsSyncing(false);
   }, [syncQueue, user, isSyncing]);
 
@@ -138,12 +136,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       console.log("App is online, processing sync queue...");
       processSyncQueue();
     };
-    
+
     window.addEventListener('online', handleOnline);
-    
+
     // Attempt sync immediately if queue exists and we are online
     if (navigator.onLine && syncQueue.length > 0) {
-        processSyncQueue();
+      processSyncQueue();
     }
 
     return () => window.removeEventListener('online', handleOnline);
@@ -156,69 +154,69 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const addExpense = useCallback(async (expense: Expense) => {
     // 1. Optimistic Update
     setExpenses(prev => {
-        const updated = [expense, ...prev];
-        localStorage.setItem('spendwise_expenses', JSON.stringify(updated));
-        return updated;
+      const updated = [expense, ...prev];
+      localStorage.setItem('spendwise_expenses', JSON.stringify(updated));
+      return updated;
     });
 
     // 2. DB Update / Queue
     if (user) {
-        try {
-            if (navigator.onLine) {
-                await createExpenseInDb(expense);
-            } else {
-                throw new Error("Offline");
-            }
-        } catch (error) {
-            console.log("Network/DB Error, queuing ADD operation");
-            setSyncQueue(prev => [...prev, { type: 'ADD', payload: expense, id: expense.id, timestamp: Date.now() }]);
+      try {
+        if (navigator.onLine) {
+          await createExpenseInDb(expense);
+        } else {
+          throw new Error("Offline");
         }
+      } catch (error) {
+        console.log("Network/DB Error, queuing ADD operation");
+        setSyncQueue(prev => [...prev, { type: 'ADD', payload: expense, id: expense.id, timestamp: Date.now() }]);
+      }
     }
   }, [user]);
 
   const updateExpense = useCallback(async (updatedExpense: Expense) => {
     // 1. Optimistic Update
     setExpenses(prev => {
-        const updated = prev.map(e => e.id === updatedExpense.id ? updatedExpense : e);
-        localStorage.setItem('spendwise_expenses', JSON.stringify(updated));
-        return updated;
+      const updated = prev.map(e => e.id === updatedExpense.id ? updatedExpense : e);
+      localStorage.setItem('spendwise_expenses', JSON.stringify(updated));
+      return updated;
     });
 
     // 2. DB Update / Queue
     if (user) {
-        try {
-             if (navigator.onLine) {
-                await updateExpenseInDb(updatedExpense);
-             } else {
-                 throw new Error("Offline");
-             }
-        } catch (error) {
-             console.log("Network/DB Error, queuing UPDATE operation");
-             setSyncQueue(prev => [...prev, { type: 'UPDATE', payload: updatedExpense, id: updatedExpense.id, timestamp: Date.now() }]);
+      try {
+        if (navigator.onLine) {
+          await updateExpenseInDb(updatedExpense);
+        } else {
+          throw new Error("Offline");
         }
+      } catch (error) {
+        console.log("Network/DB Error, queuing UPDATE operation");
+        setSyncQueue(prev => [...prev, { type: 'UPDATE', payload: updatedExpense, id: updatedExpense.id, timestamp: Date.now() }]);
+      }
     }
   }, [user]);
 
   const deleteExpense = useCallback(async (id: string) => {
     // 1. Optimistic Update
     setExpenses(prev => {
-        const updated = prev.filter(e => e.id !== id);
-        localStorage.setItem('spendwise_expenses', JSON.stringify(updated));
-        return updated;
+      const updated = prev.filter(e => e.id !== id);
+      localStorage.setItem('spendwise_expenses', JSON.stringify(updated));
+      return updated;
     });
 
     // 2. DB Update / Queue
     if (user) {
-        try {
-            if (navigator.onLine) {
-                await deleteExpenseInDb(id);
-            } else {
-                throw new Error("Offline");
-            }
-        } catch (error) {
-            console.log("Network/DB Error, queuing DELETE operation");
-            setSyncQueue(prev => [...prev, { type: 'DELETE', payload: null, id, timestamp: Date.now() }]);
+      try {
+        if (navigator.onLine) {
+          await deleteExpenseInDb(id);
+        } else {
+          throw new Error("Offline");
         }
+      } catch (error) {
+        console.log("Network/DB Error, queuing DELETE operation");
+        setSyncQueue(prev => [...prev, { type: 'DELETE', payload: null, id, timestamp: Date.now() }]);
+      }
     }
   }, [user]);
 

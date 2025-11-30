@@ -30,7 +30,7 @@ const mapToDb = (expense: Expense, userId: string): ExpenseInsert => ({
   date: expense.date,
   merchant: expense.merchant,
   description: expense.description || null,
-  receipt_url: expense.receiptUrl || null,
+  receipt_url: null, // Never store receipt URL in DB to avoid payload issues
   created_at: expense.createdAt,
 });
 
@@ -41,7 +41,7 @@ export const fetchExpensesFromDb = async (): Promise<Expense[]> => {
 
   const supabasePromise = supabase
     .from('expenses')
-    .select('*')
+    .select('id, user_id, amount, currency, category_id, date, merchant, description, created_at') // Exclude receipt_url
     .order('date', { ascending: false });
 
   // Timeout promise resolves to a sentinel response so we can handle gracefully
@@ -107,7 +107,7 @@ export const updateExpenseInDb = async (expense: Expense) => {
     date: expense.date,
     merchant: expense.merchant,
     description: expense.description ?? null,
-    receipt_url: expense.receiptUrl ?? null,
+    receipt_url: null, // Never store receipt URL
     created_at: expense.createdAt,
   };
 

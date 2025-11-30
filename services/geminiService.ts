@@ -23,7 +23,7 @@ export const analyzeReceipt = async (base64Image: string): Promise<Partial<Expen
   try {
     const ai = new GoogleGenAI({ apiKey: apiKey });
     
-    const prompt = "Extract the merchant name, total amount, date, and suggest a category ID (food, transport, housing, utilities, health, shopping, work, entertainment) from this receipt. Return JSON.";
+    const prompt = "Extract the merchant name, total amount, currency code (e.g. INR, USD, EUR), date, and suggest a category ID (food, transport, housing, utilities, health, shopping, work, entertainment) from this receipt. Return JSON.";
 
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash",
@@ -45,10 +45,11 @@ export const analyzeReceipt = async (base64Image: string): Promise<Partial<Expen
             properties: {
                 merchant: { type: Type.STRING },
                 amount: { type: Type.NUMBER },
+                currency: { type: Type.STRING, description: "Currency code e.g. INR, USD, EUR" },
                 date: { type: Type.STRING, description: "YYYY-MM-DD format" },
                 categoryId: { type: Type.STRING, enum: ["food", "transport", "housing", "utilities", "health", "shopping", "work", "entertainment"] }
             },
-            required: ["merchant", "amount", "date"]
+            required: ["merchant", "amount", "date", "currency"]
         }
       }
     });
@@ -62,7 +63,7 @@ export const analyzeReceipt = async (base64Image: string): Promise<Partial<Expen
       amount: data.amount,
       date: data.date,
       categoryId: data.categoryId,
-      currency: 'INR' // Default to INR
+      currency: data.currency || 'INR' // Use extracted currency or default to INR
     };
 
   } catch (error) {

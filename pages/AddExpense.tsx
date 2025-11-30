@@ -7,6 +7,7 @@ import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
 import { Modal } from '../components/ui/Modal';
 import { analyzeReceipt } from '../services/geminiService';
+import { convertAmount } from '../services/currencyService';
 import { Camera, X, ArrowLeft } from 'lucide-react';
 
 const generateId = () => Math.random().toString(36).substr(2, 9);
@@ -16,7 +17,7 @@ export const AddExpense: React.FC = () => {
   const { categories, addExpense } = useApp();
   const { user } = useAuth();
   const fileInputRef = useRef<HTMLInputElement>(null);
-  
+
   const [isLoading, setIsLoading] = useState(false);
   const [isScanning, setIsScanning] = useState(false);
   const [receiptPreview, setReceiptPreview] = useState<string | null>(null);
@@ -48,7 +49,7 @@ export const AddExpense: React.FC = () => {
         const base64 = reader.result as string;
         setReceiptPreview(base64);
         setFormData(prev => ({ ...prev, receiptUrl: base64 }));
-        
+
         // Auto-trigger scan
         await handleScanReceipt(base64);
       };
@@ -68,9 +69,9 @@ export const AddExpense: React.FC = () => {
         receiptUrl: base64 // Ensure receipt stays
       }));
     } else {
-        // analyzeReceipt returns null if key is missing or API fails
-        // We can silently fail or show a toast, but keeping alert for MVP simplicity
-        console.warn("Could not analyze receipt. Please fill manually.");
+      // analyzeReceipt returns null if key is missing or API fails
+      // We can silently fail or show a toast, but keeping alert for MVP simplicity
+      console.warn("Could not analyze receipt. Please fill manually.");
     }
   };
 
@@ -79,19 +80,42 @@ export const AddExpense: React.FC = () => {
     setIsConfirmOpen(true);
   };
 
-  const confirmAdd = () => {
+  const confirmAdd = async () => {
     setIsConfirmOpen(false);
     setIsLoading(true);
-    
+
+    const userCurrency = user?.currency || 'INR';
+    let finalAmount = formData.amount;
+    let finalCurrency = formData.currency;
+    let finalDescription = formData.description;
+
+    if (formData.currency !== userCurrency) {
+      try {
+        finalAmount = await convertAmount(formData.amount, formData.currency, userCurrency);
+        finalCurrency = userCurrency;
+        const originalNote = `(Original: ${formData.amount} ${formData.currency})`;
+        finalDescription = finalDescription ? `${finalDescription} ${originalNote}` : originalNote;
+      } catch (error) {
+        console.error("Currency conversion failed", error);
+        // Fallback to original if conversion fails
+      }
+    }
+
     // Simulate network delay for better UX
     setTimeout(() => {
-        addExpense({
-            id: generateId(),
-            createdAt: Date.now(),
-            ...formData
-        });
-        setIsLoading(false);
-        navigate('/expenses');
+      addExpense({
+        id: generateId(),
+        createdAt: Date.now(),
+        amount: finalAmount,
+        currency: finalCurrency,
+        categoryId: formData.categoryId,
+        date: formData.date,
+        merchant: formData.merchant,
+        description: finalDescription
+        // receiptUrl is intentionally excluded to avoid storing large base64 strings
+      });
+      setIsLoading(false);
+      navigate('/expenses');
     }, 300);
   };
 
@@ -99,52 +123,52 @@ export const AddExpense: React.FC = () => {
     <div className="max-w-xl mx-auto space-y-6 animate-fade-in pb-12">
       <div className="flex items-center gap-4 mb-4 md:mb-8">
         <Button variant="ghost" size="icon" onClick={() => navigate(-1)}>
-            <ArrowLeft size={20} />
+          <ArrowLeft size={20} />
         </Button>
         <h2 className="text-2xl font-bold text-text-DEFAULT dark:text-text-dark">New Entry</h2>
       </div>
 
       <div className="bg-bg-subtle dark:bg-bg-subtle-dark md:border border-border dark:border-border-dark p-4 md:p-8 rounded-lg transition-colors shadow-sm">
         <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
-          
+
           {/* Receipt Section */}
           <div className="space-y-2">
             <label className="block text-xs font-semibold uppercase tracking-wider text-text-muted">Receipt</label>
-            
+
             {!receiptPreview ? (
-              <div 
+              <div
                 onClick={() => fileInputRef.current?.click()}
                 className="border border-dashed border-border dark:border-border-dark bg-bg dark:bg-bg-dark rounded-md p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-[#e0e0e0] dark:hover:bg-[#2a2a2a] transition-colors group"
               >
                 <div className="bg-bg-subtle dark:bg-bg-subtle-dark p-3 rounded-full mb-3 group-hover:scale-110 transition-transform">
-                    <Camera className="text-text-muted" size={20} />
+                  <Camera className="text-text-muted" size={20} />
                 </div>
                 <p className="text-sm text-text-muted font-medium">Scan or Upload Receipt</p>
               </div>
             ) : (
-               <div className="relative rounded-md overflow-hidden border border-border dark:border-border-dark bg-bg dark:bg-bg-dark group">
-                   <img src={receiptPreview} alt="Receipt" className="max-h-64 w-full object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
-                   <button 
-                    type="button"
-                    onClick={() => {
-                        setReceiptPreview(null);
-                        setFormData(prev => ({ ...prev, receiptUrl: '' }));
-                    }}
-                    className="absolute top-2 right-2 bg-black/70 text-white p-1 rounded-full shadow-sm hover:bg-black transition-colors"
-                   >
-                       <X size={16} />
-                   </button>
-                   {isScanning && (
-                       <div className="absolute inset-0 bg-bg/80 dark:bg-bg-dark/80 flex items-center justify-center text-text-DEFAULT dark:text-text-dark font-medium backdrop-blur-sm animate-pulse">
-                           AI Analyzing...
-                       </div>
-                   )}
-               </div>
+              <div className="relative rounded-md overflow-hidden border border-border dark:border-border-dark bg-bg dark:bg-bg-dark group">
+                <img src={receiptPreview} alt="Receipt" className="max-h-64 w-full object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
+                <button
+                  type="button"
+                  onClick={() => {
+                    setReceiptPreview(null);
+                    setFormData(prev => ({ ...prev, receiptUrl: '' }));
+                  }}
+                  className="absolute top-2 right-2 bg-black/70 text-white p-1 rounded-full shadow-sm hover:bg-black transition-colors"
+                >
+                  <X size={16} />
+                </button>
+                {isScanning && (
+                  <div className="absolute inset-0 bg-bg/80 dark:bg-bg-dark/80 flex items-center justify-center text-text-DEFAULT dark:text-text-dark font-medium backdrop-blur-sm animate-pulse">
+                    AI Analyzing...
+                  </div>
+                )}
+              </div>
             )}
-            <input 
-              type="file" 
-              ref={fileInputRef} 
-              className="hidden" 
+            <input
+              type="file"
+              ref={fileInputRef}
+              className="hidden"
               accept="image/*"
               onChange={handleFileChange}
               data-testid="receipt-upload"
@@ -154,100 +178,100 @@ export const AddExpense: React.FC = () => {
           {/* Amount & Date */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div className="space-y-1.5">
-                <label className="block text-xs font-semibold uppercase tracking-wider text-text-muted">Amount</label>
-                <div className="relative">
-                    <span className="absolute left-0 top-1/2 -translate-y-1/2 text-text-muted font-light text-lg">
-                        {formData.currency === 'INR' ? '₹' : formData.currency === 'USD' ? '$' : formData.currency === 'EUR' ? '€' : formData.currency}
-                    </span>
-                    <input 
-                        required
-                        type="number" 
-                        step="0.01"
-                        name="amount"
-                        value={formData.amount || ''}
-                        onChange={handleInputChange}
-                        className="w-full pl-6 py-2 bg-transparent border-b border-border dark:border-border-dark text-2xl font-light text-text-DEFAULT dark:text-text-dark focus:outline-none focus:border-primary rounded-none transition-colors placeholder:text-text-muted/30"
-                        placeholder="0.00"
-                    />
-                </div>
+              <label className="block text-xs font-semibold uppercase tracking-wider text-text-muted">Amount</label>
+              <div className="relative">
+                <span className="absolute left-0 top-1/2 -translate-y-1/2 text-text-muted font-light text-lg">
+                  {formData.currency === 'INR' ? '₹' : formData.currency === 'USD' ? '$' : formData.currency === 'EUR' ? '€' : formData.currency}
+                </span>
+                <input
+                  required
+                  type="number"
+                  step="0.01"
+                  name="amount"
+                  value={formData.amount || ''}
+                  onChange={handleInputChange}
+                  className="w-full pl-6 py-2 bg-transparent border-b border-border dark:border-border-dark text-2xl font-light text-text-DEFAULT dark:text-text-dark focus:outline-none focus:border-primary rounded-none transition-colors placeholder:text-text-muted/30"
+                  placeholder="0.00"
+                />
+              </div>
             </div>
-            <Input 
-                label="Date"
-                required
-                type="date" 
-                name="date"
-                value={formData.date}
-                onChange={handleInputChange}
+            <Input
+              label="Date"
+              required
+              type="date"
+              name="date"
+              value={formData.date}
+              onChange={handleInputChange}
             />
           </div>
 
-          <Input 
-             label="Merchant Name"
-             required
-             type="text" 
-             name="merchant"
-             value={formData.merchant}
-             onChange={handleInputChange}
-             placeholder="e.g. Starbucks"
+          <Input
+            label="Merchant Name"
+            required
+            type="text"
+            name="merchant"
+            value={formData.merchant}
+            onChange={handleInputChange}
+            placeholder="e.g. Starbucks"
           />
 
           {/* Category */}
           <div className="space-y-2">
             <label className="block text-xs font-semibold uppercase tracking-wider text-text-muted">Category</label>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                {categories.map(cat => (
-                    <button
-                        type="button"
-                        key={cat.id}
-                        onClick={() => setFormData(prev => ({ ...prev, categoryId: cat.id }))}
-                        className={`
+              {categories.map(cat => (
+                <button
+                  type="button"
+                  key={cat.id}
+                  onClick={() => setFormData(prev => ({ ...prev, categoryId: cat.id }))}
+                  className={`
                             px-2 py-2 rounded-md text-sm font-medium transition-all duration-200 border text-center truncate
-                            ${formData.categoryId === cat.id 
-                                ? 'bg-text-DEFAULT text-bg border-transparent dark:bg-white dark:text-black shadow-sm' 
-                                : 'bg-bg dark:bg-bg-dark border-border dark:border-border-dark text-text-muted hover:border-text-muted hover:text-text-DEFAULT dark:hover:text-text-dark'}
+                            ${formData.categoryId === cat.id
+                      ? 'bg-text-DEFAULT text-bg border-transparent dark:bg-white dark:text-black shadow-sm'
+                      : 'bg-bg dark:bg-bg-dark border-border dark:border-border-dark text-text-muted hover:border-text-muted hover:text-text-DEFAULT dark:hover:text-text-dark'}
                         `}
-                    >
-                        {cat.name}
-                    </button>
-                ))}
+                >
+                  {cat.name}
+                </button>
+              ))}
             </div>
           </div>
 
           {/* Description */}
           <div className="space-y-1.5">
             <label className="block text-xs font-semibold uppercase tracking-wider text-text-muted">Notes</label>
-            <textarea 
-                name="description"
-                value={formData.description}
-                onChange={handleInputChange}
-                rows={2}
-                className="w-full px-3 py-2 rounded-md border border-border dark:border-border-dark bg-transparent text-text-DEFAULT dark:text-text-dark focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary resize-none placeholder:text-text-muted/50 text-sm"
-                placeholder="Add details..."
+            <textarea
+              name="description"
+              value={formData.description}
+              onChange={handleInputChange}
+              rows={2}
+              className="w-full px-3 py-2 rounded-md border border-border dark:border-border-dark bg-transparent text-text-DEFAULT dark:text-text-dark focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary resize-none placeholder:text-text-muted/50 text-sm"
+              placeholder="Add details..."
             />
           </div>
 
           <div className="pt-4">
-            <Button 
-                type="submit" 
-                className="w-full" 
-                size="lg"
-                isLoading={isLoading}
+            <Button
+              type="submit"
+              className="w-full"
+              size="lg"
+              isLoading={isLoading}
             >
-                Review & Save
+              Review & Save
             </Button>
           </div>
         </form>
       </div>
-      
-      <Modal 
-          isOpen={isConfirmOpen}
-          onClose={() => setIsConfirmOpen(false)}
-          title="Confirm Entry"
-          description={`Are you sure you want to add this expense of ${formData.amount} at ${formData.merchant}?`}
-          onConfirm={confirmAdd}
-          confirmLabel="Add Expense"
-          isLoading={isLoading}
-       />
+
+      <Modal
+        isOpen={isConfirmOpen}
+        onClose={() => setIsConfirmOpen(false)}
+        title="Confirm Entry"
+        description={`Are you sure you want to add this expense of ${formData.amount} at ${formData.merchant}?`}
+        onConfirm={confirmAdd}
+        confirmLabel="Add Expense"
+        isLoading={isLoading}
+      />
     </div>
   );
 };
