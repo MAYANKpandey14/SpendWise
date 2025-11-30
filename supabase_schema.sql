@@ -58,3 +58,24 @@ create policy "Users can update their own expenses."
 create policy "Users can delete their own expenses."
   on public.expenses for delete
   using ( auth.uid() = user_id );
+
+-- Function to handle new user creation
+create or replace function public.handle_new_user()
+returns trigger as $$
+begin
+  insert into public.profiles (id, name, avatar, currency, locale)
+  values (
+    new.id,
+    coalesce(new.raw_user_meta_data->>'full_name', new.email),
+    new.raw_user_meta_data->>'avatar_url',
+    'INR',
+    'en-US'
+  );
+  return new;
+end;
+$$ language plpgsql security definer;
+
+-- Trigger to call the function on new user creation
+create or replace trigger on_auth_user_created
+  after insert on auth.users
+  for each row execute procedure public.handle_new_user();

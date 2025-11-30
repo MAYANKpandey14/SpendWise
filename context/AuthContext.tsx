@@ -57,8 +57,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         console.error('Failed to initialize auth session', err);
       } finally {
         clearTimeout(safetyTimeout);
-        // Always clear loading so UI can render (prevents permanent spinner)
-        setIsLoading(false);
+        // If there is a hash with access_token, let onAuthStateChange handle the loading state
+        // This prevents ProtectedRoute from redirecting before Supabase processes the hash
+        if (!window.location.hash.includes('access_token')) {
+            setIsLoading(false);
+        }
       }
     };
 
