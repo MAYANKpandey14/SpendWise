@@ -1,6 +1,15 @@
 import React from 'react';
 import { Expense, Category } from '../types';
-import * as Icons from 'lucide-react';
+import { 
+  HelpCircle, 
+  Paperclip, 
+  ShoppingBag, 
+  Coffee, 
+  Car, 
+  Home, 
+  Utensils, 
+  Zap,
+} from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
 interface ExpenseCardProps {
@@ -9,10 +18,26 @@ interface ExpenseCardProps {
   onClick: () => void;
 }
 
+// 2. Create a map of string keys to Icon components
+// This prevents the bundler from including unused icons
+const iconMap: Record<string, React.ElementType> = {
+  shopping: ShoppingBag,
+  food: Coffee,
+  transport: Car,
+  housing: Home,
+  utilities: Zap,
+  restaurant: Utensils,
+  // Add mappings for your specific category.icon strings here
+  // "database_string": IconComponent
+};
+
 export const ExpenseCard: React.FC<ExpenseCardProps> = ({ expense, category, onClick }) => {
   const { user } = useAuth();
-  // Dynamic Icon rendering
-  const IconComponent = category ? (Icons[category.icon as keyof typeof Icons] as React.ElementType) : Icons.HelpCircle;
+
+  // 3. Look up the icon from the map, fallback to HelpCircle
+  const IconComponent = category && category.icon && iconMap[category.icon] 
+    ? iconMap[category.icon] 
+    : HelpCircle;
 
   return (
     <div
@@ -20,8 +45,7 @@ export const ExpenseCard: React.FC<ExpenseCardProps> = ({ expense, category, onC
       className="group flex items-center gap-4 py-3 border-b border-border dark:border-border-dark cursor-pointer hover:bg-bg-subtle dark:hover:bg-bg-subtle-dark px-2 rounded-md transition-colors -mx-2"
     >
       <div className={`h-8 w-8 rounded flex items-center justify-center shrink-0 ${category?.color || 'bg-gray-200 text-gray-600'} bg-opacity-10 text-opacity-100`}>
-        {/* We need to extract the color from bg-X-500 to text-X-600 roughly, or just use inline styles if we wanted perfect pastel matches like Notion. For now, we rely on the existing color props but use opacity. */}
-        {IconComponent ? <IconComponent size={16} className="text-current" /> : <Icons.HelpCircle size={16} />}
+        <IconComponent size={16} className="text-current" />
       </div>
 
       <div className="flex-1 min-w-0 flex flex-col md:flex-row md:items-center md:justify-between gap-1">
@@ -39,7 +63,7 @@ export const ExpenseCard: React.FC<ExpenseCardProps> = ({ expense, category, onC
       </div>
 
       {expense.receiptUrl && (
-        <Icons.Paperclip size={14} className="text-text-muted shrink-0" />
+        <Paperclip size={14} className="text-text-muted shrink-0" />
       )}
     </div>
   );
