@@ -1,14 +1,17 @@
 import React from 'react';
 import { Expense, Category } from '../types';
-import { 
-  HelpCircle, 
-  Paperclip, 
-  ShoppingBag, 
-  Coffee, 
-  Car, 
-  Home, 
-  Utensils, 
+import {
+  HelpCircle,
+  Paperclip,
+  ShoppingBag,
+  Coffee,
+  Car,
+  Home,
+  Utensils,
   Zap,
+  ShoppingCart,
+  Briefcase,
+  HeartPulse
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
@@ -21,22 +24,31 @@ interface ExpenseCardProps {
 // 2. Create a map of string keys to Icon components
 // This prevents the bundler from including unused icons
 const iconMap: Record<string, React.ElementType> = {
-  shopping: ShoppingBag,
+  // Constants based mapping (Capitalized from constants.ts)
+  Utensils: Utensils,
+  Car: Car,
+  Home: Home,
+  Zap: Zap,
+  HeartPulse: HeartPulse,
+  ShoppingCart: ShoppingCart,
+  Briefcase: Briefcase,
+  Coffee: Coffee,
+
+  // Legacy lowercase mapping (keeping for backward compatibility)
+  shopping: ShoppingCart,
   food: Coffee,
   transport: Car,
   housing: Home,
   utilities: Zap,
   restaurant: Utensils,
-  // Add mappings for your specific category.icon strings here
-  // "database_string": IconComponent
 };
 
 export const ExpenseCard: React.FC<ExpenseCardProps> = ({ expense, category, onClick }) => {
   const { user } = useAuth();
 
   // 3. Look up the icon from the map, fallback to HelpCircle
-  const IconComponent = category && category.icon && iconMap[category.icon] 
-    ? iconMap[category.icon] 
+  const IconComponent = category && category.icon && iconMap[category.icon]
+    ? iconMap[category.icon]
     : HelpCircle;
 
   return (
